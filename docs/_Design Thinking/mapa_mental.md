@@ -1,4 +1,4 @@
-mermaid
+```mermaid
 flowchart LR
     AP((Alocação de Alunos<br/>para Prova))
 
@@ -116,3 +116,4 @@ flowchart LR
     RES --> RES2["Cadastro, alocação automática,<br/>gestão de salas e relatórios"]
     RES --> RES3["Capacidade, recursos e<br/>segurança são essenciais"]
     RES --> RES4["Lidar com imprevistos<br/>e facilitar a comunicação"]
+```
