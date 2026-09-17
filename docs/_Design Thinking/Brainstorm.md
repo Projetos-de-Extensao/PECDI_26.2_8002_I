@@ -22,76 +22,119 @@ A equipe se reuniu para debater ideias gerais sobre o projeto via chamada de ví
 ### 1. Qual o objetivo principal da aplicação?
  
 <p align = "justify">
-<b>XXXX</b> - Deve ser uma plataforma onde o aluno consiga consultar, de forma rápida, a data, o horário e a sala em que fará o Teste de Progresso.
+<b>Pedro Victor</b> - Automatizar todo o fluxo do teste de progresso, desde a inscrição do aluno até a distribuição e alocação automatizada das salas do campus.
 </p>
  
-<b>ZZzZ</b> - A plataforma deve fornecer à coordenação um painel para organizar as turmas e salas de aplicação do teste, sem depender de planilhas manuais.
+<p align = "justify">
+<b>Bruno Borges</b> - Garantir que a coordenação consiga organizar a alocação dos recursos físicos e ensalamento de forma ágil e sem conflito de horários ou capacidade.
+</p>
  
-<b>YYYY</b> - O objetivo da aplicação é reduzir os erros de alocação que hoje ocorrem por causa do processo manual feito pela coordenação.
+<p align = "justify">
+<b>Marcus Brasil</b> - Proporcionar ao aluno uma experiência simples para realizar a inscrição, consultar sua sala/prédio e emitir o comprovante de alocação instantaneamente.
+</p>
  
-<b>WWWW</b> - O principal objetivo da aplicação é a automação da distribuição dos alunos entre as salas e horários disponíveis para o teste.
- 
-<b>KKKK</b> - A plataforma deve gerenciar todo o ciclo da aplicação do teste, desde o cadastro das salas até a divulgação da alocação para os alunos.
+<p align = "justify">
+<b>Pedro Victor</b> - Reduzir significativamente os erros operacionais e o tempo gasto no gerenciamento manual das turmas e espaços da faculdade.
 </p>
  
 ---
  
-### 2. Como será o processo para cadastrar um novo cliente?
+### 2. Como será o processo para cadastro?
  
 <p align = "justify">
-<b>XXXX</b> - O aluno deverá acessar a plataforma e se cadastrar utilizando seu e-mail institucional e matrícula.
- 
-<b>YYYY</b> - O aluno preencherá um formulário com nome, matrícula, curso e período para concluir o cadastro.
- 
-<b>WWWW</b> - Com o cadastro concluído, o aluno poderá fazer login e visualizar sua alocação assim que ela for publicada pelo coordenador.
-
-<b>ZZZZ</b> - O aluno terá seu cadastro validado automaticamente pelo sistema, cruzando os dados com o cadastro acadêmico já existente na faculdade.
- 
-<b>KKKK</b> - O aluno só conseguirá se cadastrar utilizando o e-mail institucional, evitando cadastros de pessoas fora da faculdade.
- 
----
- 
-### 3. Como será a forma de adicionar produtos?
- 
-<p align = "justify">
-<b>XXXX</b> - O coordenador, ao cadastrar uma nova aplicação de teste, adicionará as salas disponíveis informando número, bloco e capacidade máxima.
+<b>Pedro Victor</b> - Autenticação e cadastro via matrícula/ID institucional com preenchimento automático das informações do aluno (curso, período e campus).
 </p>
  
 <p align = "justify">
-<b>YYYYY</b> - Cada sala terá um identificador único, capacidade de alunos e horário de disponibilidade vinculado à aplicação do teste.
+<b>Bruno Borges</b> - Cadastro simplificado e centralizado para administradores realizarem a carga de dados de turmas, professores, salas disponíveis e seus respetivos limites de assentos.
 </p>
  
-<b>ZZZZ</b> - As salas poderão ser reutilizadas em aplicações futuras, sem necessidade de recadastro.
- 
-<b>XXXX</b> - As salas ficarão indisponíveis para alocação assim que atingirem sua capacidade máxima.
-
- 
----
- 
-### 4. Outras perguntas pertinentes ao contexto
-
 <p align = "justify">
-<b>XXXX</b> - Com a localização de cada sala cadastrada, o aluno poderá visualizar como chegar até ela dentro do campus.
- 
-<b>YYYY</b> - O aluno poderá ser avisado com antecedência sobre sua alocação, por e-mail ou notificação no sistema.
- 
-<b>ZZZ</b> - O aluno poderá visualizar se há alguma exigência específica para o dia do teste (documento, horário de chegada, etc.).
- 
----
- 
-### 5. "Outras perguntas pertinentes ao contexto", Como seria a forma de adicionar do cliente adicionar os produtos ?
-<p align = "justify">
-<b>XXX</b> - O cliente....
+<b>Marcus Brasil</b> - Integração direta com a base de dados da universidade, exigindo apenas validação do e-mail acadêmico ou CPF no primeiro acesso.
 </p>
  
-### 6. Quais informações seriam interessante para o cliente?
 <p align = "justify">
-   <b>XXX</b> - Informações...
-   
-   <b>ZZZZ</b> - O cliente usuário poderá acessar informações...
+<b>Pedro Victor</b> - Validação automática para garantir que apenas alunos devidamente matriculados consigam acesso à consulta de salas.
+</p>
+ 
+---
 
-   <b>WWWWs</b> - O usuário poderá ver scouts de partidas do torneio, ver as regras dos torneios, locais e data das partidas.
-   
+### 3. Como a aplicação vai tratar o limite de capacidade e a infraestrutura das salas?
+ 
+<p align = "justify">
+<b>Pedro Victor</b> - O sistema deve ter travas automáticas para que o número de alunos alocados nunca ultrapasse a quantidade de carteiras/assentos disponíveis na sala cadastrada.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - As salas devem ter marcadores de recursos (ex: acessibilidade, ar-condicionado, projetor, computadores) para garantir a alocação correta de alunos com necessidades específicas.
+</p>
+ 
+<p align = "justify">
+<b>Marcus Brasil</b> - Ao atingir o limite máximo de vagas de um bloco ou sala, o algoritmo de alocação deve direcionar automaticamente os próximos estudantes para a sala ou prédio mais próximo dentro do mesmo campus.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - Permitir o cadastro detalhado do tipo de carteira e disposição espacial do ambiente para auditorias de capacidade do campus.
+</p>
+ 
+---
+
+### 4. Como será o processo de alocação automática dos alunos nas salas?
+ 
+<p align = "justify">
+<b>Pedro Victor</b> - A alocação deve utilizar um algoritmo que distribua os alunos priorizando critérios como curso, período ou ordem alfabética para evitar fraudes ou colas no teste de progresso.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - O administrador gera o ensalamento automático em poucos cliques com base no total de inscritos por campus e a capacidade total de cada sala.
+</p>
+ 
+<p align = "justify">
+<b>Marcus Brasil</b> - Deve existir uma opção de reordenamento manual pela coordenação antes de publicar a listagem final, para ajustes pontuais de emergência.
+</p>
+ 
+<p align = "justify">
+<b>Marcus Brasil</b> - Notificação automática para os alunos assim que o algoritmo concluir e publicar o mapa final de salas.
+</p>
+ 
+---
+
+### 5. O que acontece em caso de imprevistos no dia da prova (ex: sala interditada ou falta de energia)?
+ 
+<p align = "justify">
+<b>Pedro Victor</b> - O sistema precisa permitir o remanejamento rápido de toda uma turma de uma sala para outra em tempo real, enviando notificação de emergência no painel do aluno.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - O administrador deve conseguir realocar os alunos afetados para salas de contingência cadastradas previamente como "reservas".
+</p>
+ 
+<p align = "justify">
+<b>Marcus Brasil</b> - A aplicação deve gerar uma lista de presença atualizada instantaneamente para que o fiscal de prova saiba exatamente quem mudou de sala.
+</p>
+ 
+<p align = "justify">
+<b>Pedro Victor</b> - O status da sala no painel geral do campus deve ser atualizado para "Interditada" impedindo novas alocações acidentais.
+</p>
+ 
+---
+
+### 6. Quais relatórios ou comprovantes o sistema deve emitir após o encerramento das inscrições?
+ 
+<p align = "justify">
+<b>Pedro Victor</b> - Emissão em PDF do Comprovante de Ensalamento individual do aluno, contendo QR Code para validação na entrada do prédio/sala.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - Relatórios consolidados para a coordenação com total de alunos alocados por campus, taxa de ocupação das salas e lista oficial de chamada por sala.
+</p>
+ 
+<p align = "justify">
+<b>Marcus Brasil</b> - Relatório de pendências e vagas remanescentes para identificação rápida de salas subutilizadas ou alunos sem alocação confirmada.
+</p>
+ 
+<p align = "justify">
+<b>Bruno Borges</b> - Exportação de planilhas de presenciais e totais por bloco em formato CSV/Excel para auditoria acadêmica.
 </p>
  
 ### Requisitos elicitados
