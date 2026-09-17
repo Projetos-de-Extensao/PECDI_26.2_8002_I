@@ -10,7 +10,7 @@ O brainstorm é uma técnica de elicitação de requisitos que consiste em reuni
  
 ## Metodologia
 <p align = "justify">
-A equipe se reuniu para debater ideias gerais sobre o projeto via..., começou .... e terminou..., onde o XXXX XXXX foi o moderador, direcionando a equipe com questões pré-elaboradas, e transcrevendo as respostas para o documento.
+A equipe se reuniu para debater ideias gerais sobre o projeto via chamada de vídeo, começou às 19h do dia 17/09/2026 e terminou às 21h, onde todos nós fomos líderes e nos organizamos com partes que cada um se dava melhor, direcionandoum um ao outro com questões pré-elaboradas, e transcrevendo as respostas para o documento.
 </p>
  
 ## Brainstorm
@@ -22,48 +22,48 @@ A equipe se reuniu para debater ideias gerais sobre o projeto via..., começou .
 ### 1. Qual o objetivo principal da aplicação?
  
 <p align = "justify">
-<b>XXXX</b> - Deve ser uma plataforma onde qualquer pessoa possa...
+<b>XXXX</b> - Deve ser uma plataforma onde o aluno consiga consultar, de forma rápida, a data, o horário e a sala em que fará o Teste de Progresso.
 </p>
  
-<b>ZZZ</b> - A plataforma deve fornece...
+<b>ZZzZ</b> - A plataforma deve fornecer à coordenação um painel para organizar as turmas e salas de aplicação do teste, sem depender de planilhas manuais.
  
-<b>YYYY</b> - O objetivo da aplicação é....
+<b>YYYY</b> - O objetivo da aplicação é reduzir os erros de alocação que hoje ocorrem por causa do processo manual feito pela coordenação.
  
-<b>WWWW</b> - O principal objetivo da aplicação é a...
+<b>WWWW</b> - O principal objetivo da aplicação é a automação da distribuição dos alunos entre as salas e horários disponíveis para o teste.
  
-<b>KKKK</b> - A plataforma deve gerenciar...
+<b>KKKK</b> - A plataforma deve gerenciar todo o ciclo da aplicação do teste, desde o cadastro das salas até a divulgação da alocação para os alunos.
 </p>
  
 ---
  
-### 2. Como será o processo para cadastrar um novo clientetorneio?
+### 2. Como será o processo para cadastrar um novo cliente?
  
 <p align = "justify">
-<b>XXXX</b> - O moderador deverá fazer login e...
+<b>XXXX</b> - O aluno deverá acessar a plataforma e se cadastrar utilizando seu e-mail institucional e matrícula.
  
-<b>YYYY</b> - O cliente...
+<b>YYYY</b> - O aluno preencherá um formulário com nome, matrícula, curso e período para concluir o cadastro.
  
-<b>WWWW</b> - Com o usuário logado, ele deverá...
+<b>WWWW</b> - Com o cadastro concluído, o aluno poderá fazer login e visualizar sua alocação assim que ela for publicada pelo coordenador.
 
-<b>ZZZZ</b> - O cliente...
+<b>ZZZZ</b> - O aluno terá seu cadastro validado automaticamente pelo sistema, cruzando os dados com o cadastro acadêmico já existente na faculdade.
  
-<b>KKK</b> - O cliente...
+<b>KKKK</b> - O aluno só conseguirá se cadastrar utilizando o e-mail institucional, evitando cadastros de pessoas fora da faculdade.
  
 ---
  
 ### 3. Como será a forma de adicionar produtos?
  
 <p align = "justify">
-<b>XXXX</b> - O cliente ao cadastrar...
+<b>XXXX</b> - O coordenador, ao cadastrar uma nova aplicação de teste, adicionará as salas disponíveis informando número, bloco e capacidade máxima.
 </p>
  
 <p align = "justify">
-<b>YYYYY</b> - O produto tem...
+<b>YYYYY</b> - Cada sala terá um identificador único, capacidade de alunos e horário de disponibilidade vinculado à aplicação do teste.
 </p>
  
-<b>ZZZZ</b> - O produto....
+<b>ZZZZ</b> - As salas poderão ser reutilizadas em aplicações futuras, sem necessidade de recadastro.
  
-<b>XXXX</b> - O produto....
+<b>XXXX</b> - As salas ficarão indisponíveis para alocação assim que atingirem sua capacidade máxima.
 
  
 ---
@@ -71,11 +71,11 @@ A equipe se reuniu para debater ideias gerais sobre o projeto via..., começou .
 ### 4. Outras perguntas pertinentes ao contexto
 
 <p align = "justify">
-<b>XXXX</b> - Com a localização...
+<b>XXXX</b> - Com a localização de cada sala cadastrada, o aluno poderá visualizar como chegar até ela dentro do campus.
  
-<b>YYYY</b> - O cliente...
+<b>YYYY</b> - O aluno poderá ser avisado com antecedência sobre sua alocação, por e-mail ou notificação no sistema.
  
-<b>ZZZ</b> - O cliente...
+<b>ZZZ</b> - O aluno poderá visualizar se há alguma exigência específica para o dia do teste (documento, horário de chegada, etc.).
  
 ---
  
