@@ -163,10 +163,10 @@ Através da aplicação da técnica, foi possível elicitar alguns dos primeiros
 </p>
 ## Referências Bibliográficas
  
-> BARBOSA, S. D. J; DA SILVA, B. S. Interação humano-computador. Elsevier, 2010.
+> OSBORN, Alex Faickney. Applied Imagination: Principles and Procedures of Creative Thinking. New York: Charles Scribner's Sons, 1953.
  
  
 ## Autor(es)
 | Data | Versão | Descrição | Autor(es) |
 | -- | -- | -- | -- |
-| DD/MM/YYYY | 1.0 | Criação do documento | XXX XXXX, XXXX XXXX, YYY YYYY e ZZZ XXXX |
+| 17/09/2026 | 1.0 | Criação do documento | Pedro Victor |
