@@ -12,7 +12,7 @@ hide:
 
     ---
 
-    XXX, XXXX, xxx
+    Pedro, Marcos e Bruno
 
     [:octicons-arrow-right-24: Repositório](https://github.com/Projetos-de-Extensao/PFE_25.1_8001_III)
 
