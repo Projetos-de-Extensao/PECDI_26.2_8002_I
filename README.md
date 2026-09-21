@@ -1,3 +1,6 @@
+ # grupo 1: 
+ Marcus Brasil, Bruno Borges, Pedro Victor
+
 # Projeto Front-End
 Botafogo
 
