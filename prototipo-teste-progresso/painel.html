@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Painel | Teste de Progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/prototipo.js" defer></script>
+</head>
+<body class="perfil-coord">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<aside class="proto nao-imprimir" aria-label="Controles do protótipo">
+  <div class="proto__interno">
+    <details class="proto__telas"><summary>Telas (9)</summary><ul><li><a href="index.html"><strong>T01</strong>Acesso</a></li><li><a href="inscricao.html"><strong>T03</strong>Inscrição</a></li><li><a href="minha-prova.html"><strong>T02 T04 T05</strong>Minha prova</a></li><li><a href="painel.html" aria-current="page"><strong>T06</strong>Painel</a></li><li><a href="preparar-edicao.html"><strong>T07 T08 T09</strong>Preparar a edição</a></li><li><a href="distribuicao.html"><strong>T10 T11 T12</strong>Distribuição</a></li><li><a href="remanejamento.html"><strong>T13</strong>Remanejamento</a></li><li><a href="listas.html"><strong>T14</strong>Listas e relatórios</a></li><li><a href="lista-fiscal.html"><strong>T14</strong>Lista do fiscal</a></li></ul></details>
+    <p class="proto__id"><strong>T06</strong>Painel, desktop</p>
+    <div class="proto__estados" role="group" aria-label="Estado exibido nesta tela"><span>Estado:</span><button type="button" data-estado-alvo="andamento" aria-pressed="true">Em revisão</button><button type="button" data-estado-alvo="imprevisto" aria-pressed="false">Imprevisto</button><button type="button" data-estado-alvo="vazio" aria-pressed="false">Sem edição</button><button type="button" data-estado-alvo="carregando" aria-pressed="false">Carregando</button><button type="button" data-estado-alvo="erro" aria-pressed="false">Erro</button></div>
+    <p class="vh" id="anuncio-proto" aria-live="polite"></p>
+  </div>
+</aside>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="marca" href="painel.html"><span class="marca__selo" aria-hidden="true"></span><span>Teste de Progresso<span class="marca__perfil">Coordenação</span></span></a>
+    <nav aria-label="Menu principal">
+      <ul><li><a href="painel.html" aria-current="page"><span class="ico ico-painel" aria-hidden="true"></span>Painel</a></li><li><a href="preparar-edicao.html"><span class="ico ico-ajustes" aria-hidden="true"></span>Preparar edição</a></li><li><a href="distribuicao.html"><span class="ico ico-lista" aria-hidden="true"></span>Distribuição</a></li><li><a href="remanejamento.html"><span class="ico ico-troca" aria-hidden="true"></span>Remanejamento</a></li><li><a href="listas.html"><span class="ico ico-doc" aria-hidden="true"></span>Listas</a></li><li><a href="index.html"><span class="ico ico-sair" aria-hidden="true"></span>Sair</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<section class="cabecalho-pagina" aria-labelledby="titulo">
+  <h1 id="titulo">Painel da edição</h1>
+  <p class="subtitulo" data-estado="andamento imprevisto carregando erro">Teste de Progresso 0000/0. Prova em 00/00/0000, nos turnos da manhã, tarde e noite.</p>
+  <div data-estado="andamento"><div class="etapas" role="group" aria-label="Etapas da edição"><ol><li class="etapa etapa--feita"><a href="preparar-edicao.html#configuracao"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Configurar</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="preparar-edicao.html#salas"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Salas</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="preparar-edicao.html#alunos"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Alunos</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="distribuicao.html#gerar"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Gerar</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--atual" aria-current="step"><span class="etapa__corpo"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Revisar</span><span class="etapa__estado">Etapa atual</span></span></span></li><li class="etapa"><span class="etapa__corpo"><span class="bolha" aria-hidden="true">6</span><span class="etapa__texto"><span class="etapa__nome">Publicar</span><span class="etapa__estado">A fazer</span></span></span></li></ol></div></div>
+  <div data-estado="imprevisto" hidden><div class="etapas" role="group" aria-label="Etapas da edição"><ol><li class="etapa etapa--feita"><a href="preparar-edicao.html#configuracao"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Configurar</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="preparar-edicao.html#salas"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Salas</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="preparar-edicao.html#alunos"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Alunos</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="distribuicao.html#gerar"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Gerar</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="distribuicao.html#revisar"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Revisar</span><span class="etapa__estado">Concluída</span></span></a></li><li class="etapa etapa--feita"><a href="distribuicao.html#publicar"><span class="bolha" aria-hidden="true"></span><span class="etapa__texto"><span class="etapa__nome">Publicar</span><span class="etapa__estado">Publicada</span></span></a></li></ol></div></div>
+</section>
+
+<section aria-label="Imprevisto" data-estado="imprevisto" hidden>
+  <div class="alerta alerta--erro" role="alert" data-foco>
+    <span class="ico ico-bloqueio" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Sala 004 indisponível desde 00h00</p>
+      <p>Prédio 1, Campus 1, turno da manhã. Os 38 alunos desta sala precisam de outra sala. Há 3 salas de contingência com vagas.</p>
+      <div class="acoes"><a class="botao botao--perigo" href="remanejamento.html"><span class="ico ico-troca" aria-hidden="true"></span>Remanejar alunos</a></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Nenhuma edição" data-estado="vazio" hidden>
+  <div class="vazio" data-foco tabindex="-1">
+    <span class="ico ico-calendario ico--g" aria-hidden="true"></span>
+    <h2>Nenhuma edição configurada</h2>
+    <p>Comece pela configuração: período, horários, campus e prédios. Depois cadastre as salas e carregue os alunos.</p>
+    <a class="botao botao--primario" href="preparar-edicao.html#configuracao">Configurar edição</a>
+  </div>
+</section>
+
+<section aria-label="Carregando" data-estado="carregando" hidden>
+  <p class="linha texto-suave" role="status"><span class="girando" aria-hidden="true"></span>Carregando o painel…</p>
+  <div class="metricas" aria-hidden="true">
+    <div class="metrica"><span class="esqueleto esqueleto--curto"></span><span class="esqueleto esqueleto--titulo"></span></div>
+    <div class="metrica"><span class="esqueleto esqueleto--curto"></span><span class="esqueleto esqueleto--titulo"></span></div>
+    <div class="metrica"><span class="esqueleto esqueleto--curto"></span><span class="esqueleto esqueleto--titulo"></span></div>
+    <div class="metrica"><span class="esqueleto esqueleto--curto"></span><span class="esqueleto esqueleto--titulo"></span></div>
+  </div>
+  <span class="esqueleto esqueleto--bloco" aria-hidden="true"></span>
+</section>
+
+<section aria-label="Erro ao carregar" data-estado="erro" hidden>
+  <div class="alerta alerta--erro" role="alert" data-foco>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Não foi possível carregar o painel</p>
+      <p>Os dados da edição não foram alterados. Confira a conexão e tente de novo.</p>
+      <div class="acoes"><button class="botao botao--primario" type="button" data-ir-estado="carregando" data-depois="andamento"><span class="ico ico-atualizar" aria-hidden="true"></span>Tentar de novo</button></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="titulo-numeros" data-estado="andamento imprevisto">
+  <h2 id="titulo-numeros" class="vh">Números da edição</h2>
+  <div class="grade grade--lateral">
+    <div class="pilha pilha--longa">
+      <dl class="metricas">
+        <div class="metrica"><dt>Inscritos</dt><dd><span class="metrica__valor">1.236</span><span class="metrica__nota">de 1.248 alunos aceitos na carga</span></dd></div>
+        <div class="metrica"><dt>Salas para a distribuição</dt><dd><span class="metrica__valor">32</span><span class="metrica__nota" data-estado="andamento">mais 3 de contingência</span><span class="metrica__nota" data-estado="imprevisto" hidden>1 interditada, 2 de contingência livres</span></dd></div>
+        <div class="metrica"><dt>Ocupação</dt><dd>
+          <span class="metrica__valor" data-estado="andamento">93%</span><span class="metrica__nota" data-estado="andamento">1.229 alunos em 1.320 lugares</span>
+          <span class="metrica__valor" data-estado="imprevisto" hidden>94%</span><span class="metrica__nota" data-estado="imprevisto" hidden>1.236 alunos em 1.320 lugares</span>
+        </dd></div>
+        <div class="metrica"><dt>Pendências</dt><dd>
+          <span class="metrica__valor" data-estado="andamento">22</span><span class="metrica__nota" data-estado="andamento"><span class="pilula pilula--erro"><span class="ico ico-bloqueio" aria-hidden="true"></span>10 bloqueiam a publicação</span></span>
+          <span class="metrica__valor" data-estado="imprevisto" hidden>38</span><span class="metrica__nota" data-estado="imprevisto" hidden><span class="pilula pilula--erro"><span class="ico ico-bloqueio" aria-hidden="true"></span>alunos em sala interditada</span></span>
+        </dd></div>
+      </dl>
+
+      <div class="tabela-rolagem" data-estado="andamento">
+        <table class="tabela">
+          <caption>Pendências<span>O que bloqueia vem primeiro.</span></caption>
+          <thead><tr><th scope="col">O que falta</th><th scope="col">Efeito</th><th scope="col"><span class="vh">Ação</span></th></tr></thead>
+          <tbody>
+            <tr class="linha--erro"><th scope="row">7 alunos sem sala</th><td><span class="pilula pilula--erro"><span class="ico ico-bloqueio" aria-hidden="true"></span>Bloqueia a publicação</span></td><td><a class="botao botao--texto botao--pequeno" href="distribuicao.html#revisar">Resolver na revisão</a></td></tr>
+            <tr class="linha--erro"><th scope="row">1 sala acima da capacidade (Sala 007: 42 de 40)</th><td><span class="pilula pilula--erro"><span class="ico ico-bloqueio" aria-hidden="true"></span>Bloqueia a publicação</span></td><td><a class="botao botao--texto botao--pequeno" href="distribuicao.html#revisar">Resolver na revisão</a></td></tr>
+            <tr class="linha--erro"><th scope="row">2 conflitos de horário</th><td><span class="pilula pilula--erro"><span class="ico ico-bloqueio" aria-hidden="true"></span>Bloqueia a publicação</span></td><td><a class="botao botao--texto botao--pequeno" href="distribuicao.html#revisar">Resolver na revisão</a></td></tr>
+            <tr class="linha--atencao"><th scope="row">12 registros da carga com dado faltando</th><td><span class="pilula pilula--atencao"><span class="ico ico-pendente" aria-hidden="true"></span>Ficam fora da distribuição</span></td><td><a class="botao botao--texto botao--pequeno" href="preparar-edicao.html#alunos">Corrigir registros</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <caption>Ocupação por prédio</caption>
+          <thead><tr><th scope="col">Campus</th><th scope="col">Prédio</th><th scope="col" class="num">Salas</th><th scope="col" class="num">Lugares</th><th scope="col">Ocupação</th></tr></thead>
+          <tbody>
+            <tr><td>Campus 1</td><th scope="row">Prédio 1</th><td class="num">14</td><td class="num">588</td><td><span class="ocupacao ocupacao--alta"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 95.2%"></span></span><span class="ocupacao__texto">560 de 588 lugares (95%)</span></span></td></tr>
+            <tr><td>Campus 1</td><th scope="row">Prédio 2</th><td class="num">10</td><td class="num">420</td><td><span class="ocupacao ocupacao--alta"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 95.5%"></span></span><span class="ocupacao__texto">401 de 420 lugares (95%)</span></span></td></tr>
+            <tr><td>Campus 2</td><th scope="row">Prédio 3</th><td class="num">8</td><td class="num">312</td><td><span class="ocupacao "><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 85.9%"></span></span><span class="ocupacao__texto">268 de 312 lugares (86%)</span></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside class="pilha" aria-label="Próximos passos">
+      <div class="painel painel--destaque" data-estado="andamento">
+        <h2>Próxima etapa</h2>
+        <p>Revisar a distribuição e resolver os 10 itens que bloqueiam a publicação.</p>
+        <a class="botao botao--primario" href="distribuicao.html#revisar">Continuar a revisão<span class="ico ico-seta-dir" aria-hidden="true"></span></a>
+      </div>
+      <div class="painel" data-estado="imprevisto" hidden>
+        <h2>Distribuição publicada</h2>
+        <p class="texto-suave">Em 00/00/0000 às 00h00. Mudanças agora passam pelo remanejamento e avisam alunos e fiscais.</p>
+      </div>
+      <div class="painel">
+        <h2>Atalhos</h2>
+        <ul class="atalhos">
+          <li><a href="remanejamento.html"><span class="ico ico-troca" aria-hidden="true"></span>Remanejar alunos (imprevisto)</a></li>
+          <li><a href="listas.html"><span class="ico ico-doc" aria-hidden="true"></span>Listas e relatórios</a></li>
+          <li><a href="preparar-edicao.html#salas"><span class="ico ico-porta" aria-hidden="true"></span>Salas e situação</a></li>
+          <li><a href="preparar-edicao.html#alunos"><span class="ico ico-grupo" aria-hidden="true"></span>Carga de alunos</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer><p>Sistema de alocação do Teste de Progresso</p><p>Edição 0000/0</p></footer>
+</body>
+</html>

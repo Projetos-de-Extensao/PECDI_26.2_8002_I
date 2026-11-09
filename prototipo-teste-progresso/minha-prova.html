@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Minha prova | Teste de Progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/prototipo.js" defer></script>
+</head>
+<body class="perfil-aluno">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<aside class="proto nao-imprimir" aria-label="Controles do protótipo">
+  <div class="proto__interno">
+    <details class="proto__telas"><summary>Telas (9)</summary><ul><li><a href="index.html"><strong>T01</strong>Acesso</a></li><li><a href="inscricao.html"><strong>T03</strong>Inscrição</a></li><li><a href="minha-prova.html" aria-current="page"><strong>T02 T04 T05</strong>Minha prova</a></li><li><a href="painel.html"><strong>T06</strong>Painel</a></li><li><a href="preparar-edicao.html"><strong>T07 T08 T09</strong>Preparar a edição</a></li><li><a href="distribuicao.html"><strong>T10 T11 T12</strong>Distribuição</a></li><li><a href="remanejamento.html"><strong>T13</strong>Remanejamento</a></li><li><a href="listas.html"><strong>T14</strong>Listas e relatórios</a></li><li><a href="lista-fiscal.html"><strong>T14</strong>Lista do fiscal</a></li></ul></details>
+    <p class="proto__id"><strong>T02 T04 T05</strong>Minha prova, celular</p>
+    <div class="proto__estados" role="group" aria-label="Estado exibido nesta tela"><span>Estado:</span><button type="button" data-estado-alvo="nao-inscrito" aria-pressed="false">Não inscrito</button><button type="button" data-estado-alvo="aguardando" aria-pressed="false">Aguardando publicação</button><button type="button" data-estado-alvo="publicada" aria-pressed="true">Publicada</button><button type="button" data-estado-alvo="alterada" aria-pressed="false">Sala alterada</button><button type="button" data-estado-alvo="comprovante" aria-pressed="false">Comprovante</button><button type="button" data-estado-alvo="comprovante-novo" aria-pressed="false">Novo comprovante</button><button type="button" data-estado-alvo="carregando" aria-pressed="false">Carregando</button><button type="button" data-estado-alvo="erro" aria-pressed="false">Erro</button></div>
+    <p class="vh" id="anuncio-proto" aria-live="polite"></p>
+  </div>
+</aside>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="marca" href="minha-prova.html"><span class="marca__selo" aria-hidden="true"></span><span>Teste de Progresso<span class="marca__perfil">Área do aluno</span></span></a>
+    <nav aria-label="Menu principal">
+      <ul><li><a href="minha-prova.html" aria-current="page"><span class="ico ico-casa" aria-hidden="true"></span>Minha prova</a></li><li><a href="index.html"><span class="ico ico-sair" aria-hidden="true"></span>Sair</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<section class="cabecalho-pagina" aria-labelledby="titulo" data-estado="nao-inscrito aguardando publicada alterada carregando erro">
+  <h1 id="titulo">Olá, Nome do aluno</h1>
+  <p class="subtitulo">Matrícula <span class="mono">000000000</span>, Nome do curso</p>
+</section>
+
+<section aria-label="Aviso de mudança de sala" data-estado="alterada" hidden>
+  <div class="alerta alerta--alteracao" role="alert" data-foco>
+    <span class="ico ico-troca" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Sua sala mudou</p>
+      <p class="antes-depois">
+        <span class="vh">Antes:</span><del>Sala 004, Prédio 1</del>
+        <span class="ico ico-seta-dir" aria-hidden="true"></span>
+        <span class="vh">Agora:</span><ins>Sala C01, Prédio 2</ins>
+      </p>
+      <p>Alterada em 00/00/0000 às 00h00. Campus, data e horário continuam os mesmos.</p>
+      <p><strong>Emita o comprovante de novo:</strong> o anterior mostra a sala antiga.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="titulo-sala" data-estado="publicada alterada">
+  <h2 id="titulo-sala" class="vh">Sua sala</h2>
+  <div data-estado="publicada"><article class="bilhete" aria-labelledby="bilhete-normal-titulo">
+  <header class="bilhete__topo">
+    <h3 class="bilhete__edicao" id="bilhete-normal-titulo">Sua prova</h3>
+    <p class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Publicada</p>
+  </header>
+  <dl class="bilhete__dados">
+    <div><dt><span class="ico ico-calendario" aria-hidden="true"></span>Data</dt><dd>00/00/0000<span>dia da semana</span></dd></div>
+    <div><dt><span class="ico ico-relogio" aria-hidden="true"></span>Horário</dt><dd>00h00 às 00h00<span>Turno da manhã</span></dd></div>
+    <div><dt><span class="ico ico-campus" aria-hidden="true"></span>Campus</dt><dd>Campus 1</dd></div>
+    <div><dt><span class="ico ico-predio" aria-hidden="true"></span>Prédio</dt><dd>Prédio 1</dd></div>
+  </dl>
+  <div class="bilhete__picote" aria-hidden="true"></div>
+  <div class="bilhete__sala">
+    <dl>
+      <div><dt class="bilhete__sala-rotulo">Sala</dt><dd class="bilhete__sala-numero"><mark>004</mark></dd></div>
+    </dl>
+    <p class="texto-suave texto-pequeno">Prédio 1, Campus 1</p>
+  </div>
+  <p class="bilhete__rodape"><span class="ico ico-atualizar" aria-hidden="true"></span>Publicada em 00/00/0000 às 00h00</p>
+</article></div>
+  <div data-estado="alterada" hidden><article class="bilhete bilhete--alterado" aria-labelledby="bilhete-alterado-titulo">
+  <header class="bilhete__topo">
+    <h3 class="bilhete__edicao" id="bilhete-alterado-titulo">Sua prova</h3>
+    <p class="pilula pilula--alteracao"><span class="ico ico-troca" aria-hidden="true"></span>Sala alterada</p>
+  </header>
+  <dl class="bilhete__dados">
+    <div><dt><span class="ico ico-calendario" aria-hidden="true"></span>Data</dt><dd>00/00/0000<span>dia da semana</span></dd></div>
+    <div><dt><span class="ico ico-relogio" aria-hidden="true"></span>Horário</dt><dd>00h00 às 00h00<span>Turno da manhã</span></dd></div>
+    <div><dt><span class="ico ico-campus" aria-hidden="true"></span>Campus</dt><dd>Campus 1</dd></div>
+    <div><dt><span class="ico ico-predio" aria-hidden="true"></span>Prédio</dt><dd>Prédio 2</dd></div>
+  </dl>
+  <div class="bilhete__picote" aria-hidden="true"></div>
+  <div class="bilhete__sala">
+    <dl>
+      <div><dt class="bilhete__sala-rotulo">Sala</dt><dd class="bilhete__sala-numero"><mark>C01</mark></dd></div>
+    </dl>
+    <p class="texto-suave texto-pequeno">Prédio 2, Campus 1</p>
+  </div>
+  <p class="bilhete__rodape"><span class="ico ico-atualizar" aria-hidden="true"></span>Sala alterada em 00/00/0000 às 00h00</p>
+</article></div>
+  <div class="acoes acoes--celular-pilha">
+    <button class="botao botao--primario" type="button" data-ir-estado="comprovante" data-estado="publicada"><span class="ico ico-doc" aria-hidden="true"></span>Emitir comprovante</button>
+    <button class="botao botao--primario" type="button" data-ir-estado="comprovante-novo" data-estado="alterada" hidden><span class="ico ico-doc" aria-hidden="true"></span>Emitir novo comprovante</button>
+  </div>
+</section>
+
+<section aria-labelledby="titulo-situacao" data-estado="nao-inscrito aguardando publicada alterada">
+  <h2 id="titulo-situacao" class="vh">Sua situação</h2>
+
+  <article class="status" data-estado="nao-inscrito" hidden>
+    <header class="status__topo">
+      <h3 class="status__titulo">Inscrição</h3>
+      <p class="pilula pilula--atencao"><span class="ico ico-pendente" aria-hidden="true"></span>Não inscrito</p>
+    </header>
+    <p>As inscrições vão até <strong>00/00/0000</strong>. Sem inscrição você não recebe sala para a prova.</p>
+    <div class="acoes"><a class="botao botao--primario botao--largo" href="inscricao.html">Fazer inscrição</a></div>
+  </article>
+
+  <article class="status" data-estado="nao-inscrito" hidden>
+    <header class="status__topo">
+      <h3 class="status__titulo">Sala da prova</h3>
+      <p class="pilula pilula--indisponivel"><span class="ico ico-relogio" aria-hidden="true"></span>Aguardando inscrição</p>
+    </header>
+    <p class="texto-suave">Depois da inscrição, sua sala aparece aqui quando a coordenação publicar a distribuição.</p>
+  </article>
+
+  <article class="status" data-estado="aguardando" hidden>
+    <header class="status__topo">
+      <h3 class="status__titulo">Sala da prova</h3>
+      <p class="pilula pilula--info"><span class="ico ico-relogio" aria-hidden="true"></span>Ainda não publicada</p>
+    </header>
+    <p>A coordenação está organizando as salas. Previsão de publicação: <strong>00/00/0000</strong>.</p>
+    <p class="texto-suave">Quando for publicada, esta tela mostra data, horário, campus, prédio e sala.</p>
+  </article>
+
+  <article class="status" data-estado="aguardando publicada alterada">
+    <header class="status__topo">
+      <h3 class="status__titulo">Inscrição</h3>
+      <p class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Confirmada</p>
+    </header>
+    <p class="texto-suave">Feita em 00/00/0000. Protocolo <span class="mono">0000-0000</span>.</p>
+  </article>
+</section>
+
+<section aria-label="Carregando" data-estado="carregando" hidden>
+  <p class="linha texto-suave" role="status"><span class="girando" aria-hidden="true"></span>Carregando sua situação…</p>
+  <div class="bilhete" aria-hidden="true">
+    <div class="bilhete__topo"><span class="esqueleto esqueleto--curto"></span></div>
+    <div class="pilha" style="padding: var(--e-5) var(--e-4);">
+      <span class="esqueleto"></span><span class="esqueleto"></span><span class="esqueleto esqueleto--curto"></span>
+      <span class="esqueleto esqueleto--bloco"></span>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Erro ao carregar" data-estado="erro" hidden>
+  <div class="alerta alerta--erro" role="alert" data-foco>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Não foi possível carregar sua situação</p>
+      <p>A conexão caiu ou está lenta. Nada mudou na sua inscrição. Tente de novo.</p>
+      <p class="texto-pequeno">Se já salvou o comprovante, ele mostra a sala da data em que foi emitido.</p>
+      <div class="acoes"><button class="botao botao--primario" type="button" data-ir-estado="carregando" data-depois="publicada"><span class="ico ico-atualizar" aria-hidden="true"></span>Tentar de novo</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="cabecalho-pagina nao-imprimir" aria-labelledby="titulo-comprovante" data-estado="comprovante comprovante-novo" hidden>
+  <button class="voltar botao botao--texto" type="button" data-ir-estado="publicada" data-estado="comprovante" hidden><span class="ico ico-seta-esq" aria-hidden="true"></span>Minha prova</button>
+  <button class="voltar botao botao--texto" type="button" data-ir-estado="alterada" data-estado="comprovante-novo" hidden><span class="ico ico-seta-esq" aria-hidden="true"></span>Minha prova</button>
+  <h1 id="titulo-comprovante">Comprovante</h1>
+  <p class="subtitulo">Leve no dia da prova, impresso ou salvo no celular.</p>
+</section>
+
+<section aria-label="Comprovante substituído" data-estado="comprovante-novo" class="nao-imprimir" hidden>
+  <div class="alerta alerta--alteracao" role="alert" data-foco>
+    <span class="ico ico-troca" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Este é o novo comprovante</p>
+      <p>Sua sala mudou em 00/00/0000 às 00h00. O comprovante anterior mostra a Sala 004 e não vale mais. Salve este no lugar dele.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Comprovante de alocação" data-estado="comprovante comprovante-novo" hidden>
+  <article class="comprovante" aria-labelledby="comp-titulo" data-foco tabindex="-1">
+    <header class="comprovante__topo">
+      <h2 id="comp-titulo">Comprovante de alocação</h2>
+      <p class="texto-suave">Teste de Progresso 0000/0</p>
+    </header>
+    <div class="comprovante__corpo">
+      <div class="comprovante__grupo">
+        <h3>Aluno</h3>
+        <dl>
+          <dt>Nome</dt><dd>Nome do aluno</dd>
+          <dt>Matrícula</dt><dd class="mono">000000000</dd>
+          <dt>Curso</dt><dd>Nome do curso</dd>
+        </dl>
+      </div>
+      <div class="comprovante__grupo">
+        <h3>Prova</h3>
+        <dl>
+          <dt>Data</dt><dd>00/00/0000</dd>
+          <dt>Horário</dt><dd>00h00 às 00h00 (manhã)</dd>
+          <dt>Campus</dt><dd>Campus 1</dd>
+          <dt>Prédio</dt><dd><span data-estado="comprovante" hidden>Prédio 1</span><span data-estado="comprovante-novo" hidden>Prédio 2</span></dd>
+          <dt>Sala</dt><dd><mark class="sala-marcada"><span data-estado="comprovante" hidden>Sala 004</span><span data-estado="comprovante-novo" hidden>Sala C01</span></mark></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="comprovante__validacao">
+      <div class="qr" role="img" aria-label="QR Code do código de validação TP-0000-0000-0000"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21"><path stroke="#14213d" d="M0 0.5h7m3 0h3m1 0h7m-21 1h1m5 0h1m4 0h2m1 0h1m5 0h1m-21 1h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-21 1h1m1 0h3m1 0h1m3 0h3m1 0h1m1 0h3m1 0h1m-21 1h1m1 0h3m1 0h1m3 0h3m1 0h1m1 0h3m1 0h1m-21 1h1m5 0h1m1 0h3m3 0h1m5 0h1m-21 1h7m1 0h1m1 0h1m1 0h1m1 0h7m-12 1h1m-10 1h1m2 0h1m1 0h2m1 0h1m1 0h4m1 0h1m-13 1h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h3m-21 1h2m1 0h1m2 0h2m1 0h3m1 0h2m4 0h2m-21 1h6m3 0h1m2 0h4m1 0h1m-17 1h1m4 0h3m1 0h2m1 0h2m1 0h1m3 0h1m-13 1h1m2 0h1m1 0h7m-20 1h7m2 0h4m3 0h2m1 0h2m-21 1h1m5 0h1m1 0h4m2 0h2m1 0h1m1 0h1m-20 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h2m-20 1h1m1 0h3m1 0h1m1 0h3m3 0h2m3 0h2m-21 1h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h3m1 0h1m1 0h1m-21 1h1m5 0h1m3 0h2m4 0h2m2 0h1m-21 1h7m1 0h1m2 0h2m3 0h3"/></svg></div>
+      <div class="pilha pilha--curta">
+        <p class="texto-suave texto-pequeno">Código de validação</p>
+        <p class="codigo">TP-0000-0000-0000</p>
+        <p class="texto-suave texto-pequeno">Se o QR Code não puder ser lido, o fiscal confere pelo código.</p>
+      </div>
+    </div>
+    <p class="comprovante__rodape">Emitido em 00/00/0000 às 00h00. Vale para a distribuição <span data-estado="comprovante" hidden>publicada</span><span data-estado="comprovante-novo" hidden>atualizada</span> em 00/00/0000 às 00h00.</p>
+  </article>
+
+  <div class="acoes acoes--celular-pilha nao-imprimir">
+    <button class="botao botao--primario" type="button" data-imprimir="Na janela de impressão, escolha Salvar como PDF."><span class="ico ico-baixar" aria-hidden="true"></span>Salvar em PDF</button>
+    <button class="botao botao--secundario" type="button" data-imprimir="Abrindo a janela de impressão."><span class="ico ico-imprimir" aria-hidden="true"></span>Imprimir</button>
+  </div>
+  <div id="regiao-aviso" class="alerta alerta--info nao-imprimir" role="status" hidden>
+    <span class="ico ico-info" aria-hidden="true"></span>
+    <div class="alerta__corpo"><p data-texto></p></div>
+  </div>
+</section>
+</main>
+<footer><p>Sistema de alocação do Teste de Progresso</p><p>Dúvidas sobre sua sala? Procure a coordenação do seu curso.</p></footer>
+</body>
+</html>

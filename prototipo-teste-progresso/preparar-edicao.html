@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Preparar a edição | Teste de Progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/prototipo.js" defer></script>
+</head>
+<body class="perfil-coord">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<aside class="proto nao-imprimir" aria-label="Controles do protótipo">
+  <div class="proto__interno">
+    <details class="proto__telas"><summary>Telas (9)</summary><ul><li><a href="index.html"><strong>T01</strong>Acesso</a></li><li><a href="inscricao.html"><strong>T03</strong>Inscrição</a></li><li><a href="minha-prova.html"><strong>T02 T04 T05</strong>Minha prova</a></li><li><a href="painel.html"><strong>T06</strong>Painel</a></li><li><a href="preparar-edicao.html" aria-current="page"><strong>T07 T08 T09</strong>Preparar a edição</a></li><li><a href="distribuicao.html"><strong>T10 T11 T12</strong>Distribuição</a></li><li><a href="remanejamento.html"><strong>T13</strong>Remanejamento</a></li><li><a href="listas.html"><strong>T14</strong>Listas e relatórios</a></li><li><a href="lista-fiscal.html"><strong>T14</strong>Lista do fiscal</a></li></ul></details>
+    <p class="proto__id"><strong>T07 T08 T09</strong>Preparar a edição, desktop</p>
+    <div class="proto__estados" role="group" aria-label="Estado exibido nesta tela"><span>Estado:</span><button type="button" data-estado-alvo="configuracao" data-grupo="configuracao" aria-pressed="true">Preenchido</button><button type="button" data-estado-alvo="configuracao-erro" data-grupo="configuracao" aria-pressed="false">Erro</button><button type="button" data-estado-alvo="configuracao-salvando" data-grupo="configuracao" aria-pressed="false">Salvando</button><button type="button" data-estado-alvo="configuracao-salva" data-grupo="configuracao" aria-pressed="false">Salva</button><button type="button" data-estado-alvo="salas" data-grupo="salas" hidden aria-pressed="false">Com salas</button><button type="button" data-estado-alvo="salas-vazio" data-grupo="salas" hidden aria-pressed="false">Sem salas</button><button type="button" data-estado-alvo="salas-erro" data-grupo="salas" hidden aria-pressed="false">Erro</button><button type="button" data-estado-alvo="salas-salva" data-grupo="salas" hidden aria-pressed="false">Sala cadastrada</button><button type="button" data-estado-alvo="alunos" data-grupo="alunos" hidden aria-pressed="false">Com pendências</button><button type="button" data-estado-alvo="alunos-vazio" data-grupo="alunos" hidden aria-pressed="false">Sem alunos</button><button type="button" data-estado-alvo="alunos-validando" data-grupo="alunos" hidden aria-pressed="false">Validando</button><button type="button" data-estado-alvo="alunos-arquivo" data-grupo="alunos" hidden aria-pressed="false">Arquivo inválido</button><button type="button" data-estado-alvo="alunos-confirmado" data-grupo="alunos" hidden aria-pressed="false">Carga confirmada</button></div>
+    <p class="vh" id="anuncio-proto" aria-live="polite"></p>
+  </div>
+</aside>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="marca" href="painel.html"><span class="marca__selo" aria-hidden="true"></span><span>Teste de Progresso<span class="marca__perfil">Coordenação</span></span></a>
+    <nav aria-label="Menu principal">
+      <ul><li><a href="painel.html"><span class="ico ico-painel" aria-hidden="true"></span>Painel</a></li><li><a href="preparar-edicao.html" aria-current="page"><span class="ico ico-ajustes" aria-hidden="true"></span>Preparar edição</a></li><li><a href="distribuicao.html"><span class="ico ico-lista" aria-hidden="true"></span>Distribuição</a></li><li><a href="remanejamento.html"><span class="ico ico-troca" aria-hidden="true"></span>Remanejamento</a></li><li><a href="listas.html"><span class="ico ico-doc" aria-hidden="true"></span>Listas</a></li><li><a href="index.html"><span class="ico ico-sair" aria-hidden="true"></span>Sair</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<section class="cabecalho-pagina" aria-labelledby="titulo">
+  <h1 id="titulo">Preparar a edição</h1>
+  <p class="subtitulo">Período e locais, salas e alunos. Com as três partes prontas, a distribuição pode ser gerada.</p>
+  <nav class="abas" aria-label="Partes da preparação"><ul><li><a href="#configuracao" data-aba="configuracao" aria-current="page"><span class="ico ico-ajustes" aria-hidden="true"></span>Configuração</a></li><li><a href="#salas" data-aba="salas"><span class="ico ico-porta" aria-hidden="true"></span>Salas</a></li><li><a href="#alunos" data-aba="alunos"><span class="ico ico-grupo" aria-hidden="true"></span>Alunos</a></li></ul></nav>
+</section>
+<div data-estado="configuracao configuracao-erro configuracao-salvando configuracao-salva">
+<section aria-label="Configuração salva" data-estado="configuracao-salva" hidden>
+  <div class="alerta alerta--ok" role="status" data-foco>
+    <span class="ico ico-ok" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Configuração salva</p>
+      <p>Próximo passo: cadastrar as salas de cada prédio.</p>
+      <div class="acoes"><a class="botao botao--primario" href="preparar-edicao.html#salas">Cadastrar salas</a></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Formulário de configuração" data-estado="configuracao configuracao-erro configuracao-salvando configuracao-salva">
+  <div class="alerta alerta--erro" role="alert" data-resumo-erros data-estado="configuracao-erro" tabindex="-1" data-foco hidden>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Corrija <span data-contagem>2 campos</span> para salvar</p>
+      <ul>
+        <li><a href="#periodo-fim">A data de fim do período é anterior à de início</a></li>
+        <li><a href="#noite-fim">Informe o horário de fim do turno da noite</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grade grade--lateral">
+    <form class="formulario" data-validar data-ir-estado="configuracao-salvando" data-depois="configuracao-salva" novalidate aria-labelledby="titulo">
+      <fieldset>
+        <legend>Edição</legend>
+        <div class="campo">
+          <label for="nome-edicao">Nome da edição</label>
+          <input id="nome-edicao" name="nome-edicao" type="text" value="Teste de Progresso 0000/0" required aria-describedby="nome-edicao-erro">
+          <p class="campo__erro" id="nome-edicao-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe o nome da edição.</p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Período de aplicação</legend>
+        <p class="dica">Datas no formato dd/mm/aaaa. A data de fim não pode ser anterior à de início.</p>
+        <div class="grade grade--2">
+          <div class="campo">
+            <label for="periodo-inicio">Início</label>
+            <input id="periodo-inicio" name="periodo-inicio" type="text" inputmode="numeric" value="00/00/0000" required>
+          </div>
+          <div class="campo">
+            <label for="periodo-fim">Fim</label>
+            <input id="periodo-fim" name="periodo-fim" type="text" inputmode="numeric" value="00/00/0000" required aria-describedby="periodo-fim-erro" data-invalido-em="configuracao-erro">
+            <p class="campo__erro" id="periodo-fim-erro" data-estado="configuracao-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>A data de fim é anterior à de início. Ajuste uma das datas.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Janela de inscrição</legend>
+        <p class="dica">Fora dessa janela, o aluno vê o aviso de inscrições encerradas.</p>
+        <div class="grade grade--2">
+          <div class="campo">
+            <label for="inscricao-inicio">Abre em</label>
+            <input id="inscricao-inicio" name="inscricao-inicio" type="text" inputmode="numeric" value="00/00/0000">
+          </div>
+          <div class="campo">
+            <label for="inscricao-fim">Fecha em</label>
+            <input id="inscricao-fim" name="inscricao-fim" type="text" inputmode="numeric" value="00/00/0000">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Turnos e horários</legend>
+        <p class="dica">As provas acontecem ao mesmo tempo em todos os campi, em cada turno marcado.</p>
+        <div class="tabela-rolagem">
+          <table class="tabela">
+            <caption class="vh">Horários de cada turno</caption>
+            <thead><tr><th scope="col">Turno</th><th scope="col">Início</th><th scope="col">Fim</th></tr></thead>
+            <tbody>
+              <tr>
+                <th scope="row"><label class="marcar" for="usa-manha"><input id="usa-manha" type="checkbox" checked><span>Manhã</span></label></th>
+                <td><label class="vh" for="manha-inicio">Início da manhã</label><input id="manha-inicio" type="text" value="00h00"></td>
+                <td><label class="vh" for="manha-fim">Fim da manhã</label><input id="manha-fim" type="text" value="00h00"></td>
+              </tr>
+              <tr>
+                <th scope="row"><label class="marcar" for="usa-tarde"><input id="usa-tarde" type="checkbox" checked><span>Tarde</span></label></th>
+                <td><label class="vh" for="tarde-inicio">Início da tarde</label><input id="tarde-inicio" type="text" value="00h00"></td>
+                <td><label class="vh" for="tarde-fim">Fim da tarde</label><input id="tarde-fim" type="text" value="00h00"></td>
+              </tr>
+              <tr>
+                <th scope="row"><label class="marcar" for="usa-noite"><input id="usa-noite" type="checkbox" checked><span>Noite</span></label></th>
+                <td><label class="vh" for="noite-inicio">Início da noite</label><input id="noite-inicio" type="text" value="00h00"></td>
+                <td>
+                  <label class="vh" for="noite-fim">Fim da noite</label>
+                  <input id="noite-fim" type="text" value="00h00" required aria-describedby="noite-fim-erro" data-invalido-em="configuracao-erro">
+                  <p class="campo__erro" id="noite-fim-erro" data-estado="configuracao-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe o horário de fim.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Campus e prédios</legend>
+        <p class="dica">Use os mesmos nomes que aparecem nas placas. Eles aparecem assim para alunos e fiscais.</p>
+        <div class="grade grade--2">
+          <fieldset class="bloco-campus">
+            <legend>Campus 1</legend>
+            <div class="campo">
+              <label for="campus-1">Nome do campus</label>
+              <input id="campus-1" type="text" value="Campus 1">
+            </div>
+            <ul class="lista-editavel" aria-label="Prédios do Campus 1">
+              <li><label class="vh" for="predio-1">Prédio</label><input id="predio-1" type="text" value="Prédio 1"><button class="botao botao--texto botao--pequeno" type="button">Remover<span class="vh"> Prédio 1</span></button></li>
+              <li><label class="vh" for="predio-2">Prédio</label><input id="predio-2" type="text" value="Prédio 2"><button class="botao botao--texto botao--pequeno" type="button">Remover<span class="vh"> Prédio 2</span></button></li>
+            </ul>
+            <button class="botao botao--secundario botao--pequeno" type="button"><span class="ico ico-mais" aria-hidden="true"></span>Adicionar prédio</button>
+          </fieldset>
+          <fieldset class="bloco-campus">
+            <legend>Campus 2</legend>
+            <div class="campo">
+              <label for="campus-2">Nome do campus</label>
+              <input id="campus-2" type="text" value="Campus 2">
+            </div>
+            <ul class="lista-editavel" aria-label="Prédios do Campus 2">
+              <li><label class="vh" for="predio-3">Prédio</label><input id="predio-3" type="text" value="Prédio 3"><button class="botao botao--texto botao--pequeno" type="button">Remover<span class="vh"> Prédio 3</span></button></li>
+            </ul>
+            <button class="botao botao--secundario botao--pequeno" type="button"><span class="ico ico-mais" aria-hidden="true"></span>Adicionar prédio</button>
+          </fieldset>
+        </div>
+        <div class="acoes"><button class="botao botao--secundario" type="button"><span class="ico ico-mais" aria-hidden="true"></span>Adicionar campus</button></div>
+      </fieldset>
+
+      <div class="acoes">
+        <button class="botao botao--primario" type="submit" data-estado="configuracao configuracao-erro configuracao-salva">Salvar configuração</button>
+        <button class="botao botao--primario" type="button" disabled aria-busy="true" data-estado="configuracao-salvando" hidden><span class="girando" aria-hidden="true"></span>Salvando…</button>
+        <a class="botao botao--texto" href="painel.html">Cancelar</a>
+      </div>
+    </form>
+
+    <aside class="painel lateral-fixa" aria-labelledby="titulo-resumo">
+      <h2 id="titulo-resumo">Resumo</h2>
+      <dl class="resumo">
+        <div><dt>Período</dt><dd>00/00/0000 a 00/00/0000</dd></div>
+        <div><dt>Inscrições</dt><dd>00/00/0000 a 00/00/0000</dd></div>
+        <div><dt>Turnos</dt><dd>Manhã, tarde e noite</dd></div>
+        <div><dt>Campus</dt><dd>2</dd></div>
+        <div><dt>Prédios</dt><dd>3</dd></div>
+      </dl>
+      <p class="texto-suave texto-pequeno">Esses dados aparecem na geração da distribuição. Mudar depois de publicar exige remanejamento.</p>
+    </aside>
+  </div>
+</section>
+</div>
+<div data-estado="salas salas-vazio salas-erro salas-salva" hidden>
+<section aria-label="Cadastro e lista de salas">
+  <div class="grade grade--lateral-esq">
+    <div class="pilha">
+      <div class="alerta alerta--ok" role="status" data-estado="salas-salva" data-foco hidden>
+        <span class="ico ico-ok" aria-hidden="true"></span>
+        <div class="alerta__corpo">
+          <p class="alerta__titulo">Sala 012 cadastrada</p>
+          <p>Prédio 2, Campus 1, com 36 lugares. Ela já aparece na lista.</p>
+        </div>
+      </div>
+
+      <form class="formulario" data-validar data-ir-estado="salas-salva" novalidate aria-labelledby="titulo-nova">
+        <fieldset>
+          <legend id="titulo-nova">Nova sala</legend>
+          <div class="alerta alerta--erro" role="alert" data-resumo-erros data-estado="salas-erro" tabindex="-1" data-foco hidden>
+            <span class="ico ico-erro" aria-hidden="true"></span>
+            <div class="alerta__corpo">
+              <p class="alerta__titulo">Corrija <span data-contagem>2 campos</span></p>
+              <ul>
+                <li><a href="#sala-nome">Informe a identificação da sala</a></li>
+                <li><a href="#sala-capacidade">Capacidade precisa ser de pelo menos 1 lugar</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="sala-campus">Campus</label>
+            <select id="sala-campus"><option>Campus 1</option><option>Campus 2</option></select>
+          </div>
+          <div class="campo">
+            <label for="sala-predio">Prédio</label>
+            <select id="sala-predio" aria-describedby="sala-predio-dica"><option>Prédio 1</option><option selected>Prédio 2</option></select>
+            <p class="dica" id="sala-predio-dica">Só aparecem os prédios do campus escolhido.</p>
+          </div>
+          <div class="campo">
+            <label for="sala-nome">Sala</label>
+            <input id="sala-nome" type="text" required aria-describedby="sala-nome-dica sala-nome-erro" data-invalido-em="salas-erro">
+            <p class="dica" id="sala-nome-dica">Como está escrito na porta. Exemplo: 012.</p>
+            <p class="campo__erro" id="sala-nome-erro" data-estado="salas-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe a identificação da sala.</p>
+          </div>
+          <div class="campo">
+            <label for="sala-capacidade">Capacidade</label>
+            <input id="sala-capacidade" type="number" min="1" inputmode="numeric" required aria-describedby="sala-capacidade-dica sala-capacidade-erro" data-invalido-em="salas-erro">
+            <p class="dica" id="sala-capacidade-dica">Lugares para prova, já com o espaçamento entre carteiras.</p>
+            <p class="campo__erro" id="sala-capacidade-erro" data-estado="salas-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>A capacidade precisa ser de pelo menos 1 lugar.</p>
+          </div>
+          <fieldset class="sem-moldura">
+            <legend>Recursos da sala</legend>
+            <label class="marcar" for="rec-acess"><input id="rec-acess" type="checkbox"><span>Acessibilidade (acesso para cadeira de rodas)</span></label>
+            <label class="marcar" for="rec-proj"><input id="rec-proj" type="checkbox"><span>Projetor</span></label>
+            <label class="marcar" for="rec-comp"><input id="rec-comp" type="checkbox"><span>Computadores</span></label>
+          </fieldset>
+          <fieldset class="sem-moldura">
+            <legend>Uso na distribuição</legend>
+            <div class="opcoes">
+              <label class="opcao" for="uso-comum"><input id="uso-comum" name="uso" type="radio" checked><span class="opcao__texto"><strong>Sala comum</strong><span>Recebe alunos na distribuição.</span></span></label>
+              <label class="opcao" for="uso-cont"><input id="uso-cont" name="uso" type="radio"><span class="opcao__texto"><strong>Sala de contingência</strong><span>Fica livre para remanejamentos.</span></span></label>
+            </div>
+          </fieldset>
+          <button class="botao botao--primario" type="submit"><span class="ico ico-mais" aria-hidden="true"></span>Cadastrar sala</button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="pilha">
+      <div class="linha linha--entre">
+        <h2 id="titulo-lista">Salas cadastradas</h2>
+        <p class="texto-suave" data-estado="salas salas-erro salas-salva" hidden>35 salas: 32 comuns e 3 de contingência</p>
+      </div>
+      <div class="filtros" data-estado="salas salas-erro salas-salva" role="search" aria-label="Filtrar salas" hidden>
+        <div class="campo"><label for="f-campus">Campus</label><select id="f-campus"><option>Todos</option><option>Campus 1</option><option>Campus 2</option></select></div>
+        <div class="campo"><label for="f-predio">Prédio</label><select id="f-predio"><option>Todos</option><option>Prédio 1</option><option>Prédio 2</option><option>Prédio 3</option></select></div>
+        <div class="campo"><label for="f-situacao">Situação</label><select id="f-situacao"><option>Todas</option><option>Disponível</option><option>Contingência</option><option>Interditada</option></select></div>
+      </div>
+
+      <div class="tabela-rolagem" data-estado="salas salas-erro salas-salva" hidden>
+        <table class="tabela" aria-labelledby="titulo-lista">
+          <thead>
+            <tr><th scope="col">Sala</th><th scope="col">Prédio</th><th scope="col">Campus</th><th scope="col" class="num">Capacidade</th><th scope="col">Ocupação</th><th scope="col">Recursos</th><th scope="col">Situação</th><th scope="col"><span class="vh">Ações</span></th></tr>
+          </thead>
+          <tbody>
+            <tr class="linha--selecionada" data-estado="salas-salva" hidden><th scope="row">Sala 012</th><td>Prédio 2</td><td>Campus 1</td><td class="num">36</td><td><span class="texto-suave texto-pequeno">Sem distribuição</span></td><td><span class="texto-suave texto-pequeno">Nenhum</span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 012</span></a></td></tr>
+            <tr><th scope="row">Sala 001</th><td>Prédio 1</td><td>Campus 1</td><td class="num">40</td><td><span class="ocupacao ocupacao--cheia"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 100.0%"></span></span><span class="ocupacao__texto">40 de 40: cheia</span></span></td><td><span class="recursos"><span class="ico ico-acessivel" role="img" aria-label="Acessibilidade" title="Acessibilidade"></span><span class="ico ico-projetor" role="img" aria-label="Projetor" title="Projetor"></span></span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 001</span></a></td></tr>
+            <tr><th scope="row">Sala 002</th><td>Prédio 1</td><td>Campus 1</td><td class="num">40</td><td><span class="ocupacao ocupacao--alta"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 95.0%"></span></span><span class="ocupacao__texto">38 de 40 lugares (95%)</span></span></td><td><span class="recursos"><span class="ico ico-projetor" role="img" aria-label="Projetor" title="Projetor"></span></span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 002</span></a></td></tr>
+            <tr><th scope="row">Sala 004</th><td>Prédio 1</td><td>Campus 1</td><td class="num">40</td><td><span class="ocupacao ocupacao--alta"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 95.0%"></span></span><span class="ocupacao__texto">38 de 40 lugares (95%)</span></span></td><td><span class="recursos"><span class="ico ico-acessivel" role="img" aria-label="Acessibilidade" title="Acessibilidade"></span></span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 004</span></a></td></tr>
+            <tr class="linha--erro"><th scope="row">Sala 007</th><td>Prédio 1</td><td>Campus 1</td><td class="num">40</td><td><span class="ocupacao ocupacao--excedida"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 100.0%"></span></span><span class="ocupacao__texto"><span class="ico ico-alerta" aria-hidden="true"></span>42 de 40: acima da capacidade</span></span></td><td><span class="texto-suave texto-pequeno">Nenhum</span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="distribuicao.html#revisar" class="botao botao--texto botao--pequeno">Revisar<span class="vh"> Sala 007</span></a></td></tr>
+            <tr><th scope="row">Sala 010</th><td>Prédio 2</td><td>Campus 1</td><td class="num">48</td><td><span class="ocupacao ocupacao--alta"><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 95.8%"></span></span><span class="ocupacao__texto">46 de 48 lugares (96%)</span></span></td><td><span class="recursos"><span class="ico ico-computador" role="img" aria-label="Computadores" title="Computadores"></span><span class="ico ico-acessivel" role="img" aria-label="Acessibilidade" title="Acessibilidade"></span></span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 010</span></a></td></tr>
+            <tr><th scope="row">Sala 011</th><td>Prédio 2</td><td>Campus 1</td><td class="num">30</td><td><span class="ocupacao "><span class="ocupacao__barra" aria-hidden="true"><span style="--pct: 0.0%"></span></span><span class="ocupacao__texto">0 de 30: sem ocupação</span></span></td><td><span class="recursos"><span class="ico ico-projetor" role="img" aria-label="Projetor" title="Projetor"></span></span></td><td><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Disponível</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala 011</span></a></td></tr>
+            <tr><th scope="row">Sala C01</th><td>Prédio 2</td><td>Campus 1</td><td class="num">40</td><td><span class="texto-suave texto-pequeno">Reservada, 40 livres</span></td><td><span class="recursos"><span class="ico ico-acessivel" role="img" aria-label="Acessibilidade" title="Acessibilidade"></span></span></td><td><span class="pilula pilula--info"><span class="ico ico-reserva" aria-hidden="true"></span>Contingência</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala C01</span></a></td></tr>
+            <tr><th scope="row">Sala C02</th><td>Prédio 3</td><td>Campus 2</td><td class="num">30</td><td><span class="texto-suave texto-pequeno">Reservada, 30 livres</span></td><td><span class="texto-suave texto-pequeno">Nenhum</span></td><td><span class="pilula pilula--info"><span class="ico ico-reserva" aria-hidden="true"></span>Contingência</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Editar<span class="vh"> Sala C02</span></a></td></tr>
+            <tr class="linha--indisponivel"><th scope="row">Sala 021</th><td>Prédio 3</td><td>Campus 2</td><td class="num">32</td><td><span class="texto-pequeno">Fora da distribuição</span></td><td><span class="recursos"><span class="ico ico-projetor" role="img" aria-label="Projetor" title="Projetor"></span></span></td><td><span class="pilula pilula--indisponivel"><span class="ico ico-bloqueio" aria-hidden="true"></span>Interditada</span></td><td><a href="#" class="botao botao--texto botao--pequeno">Ver motivo<span class="vh"> da interdição da Sala 021</span></a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="texto-suave texto-pequeno" data-estado="salas salas-erro salas-salva" hidden>Mostrando 10 de 35 salas. Sala interditada não recebe alunos e não aparece como opção na distribuição nem no remanejamento.</p>
+
+      <div class="vazio" data-estado="salas-vazio" hidden>
+        <span class="ico ico-porta ico--g" aria-hidden="true"></span>
+        <h3>Nenhuma sala cadastrada</h3>
+        <p>Use o formulário para cadastrar a primeira sala. Campus e prédios vêm da configuração da edição.</p>
+        <a class="botao botao--secundario botao--pequeno" href="preparar-edicao.html#configuracao">Rever campus e prédios</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div data-estado="alunos alunos-vazio alunos-validando alunos-arquivo alunos-confirmado" hidden>
+<section aria-label="Incluir alunos" data-estado="alunos-vazio alunos-validando alunos alunos-arquivo" hidden>
+  <div class="grade grade--2">
+    <form class="painel" data-ir-estado="alunos-validando" data-depois="alunos" novalidate aria-labelledby="titulo-importar">
+      <h2 id="titulo-importar">Importar planilha</h2>
+      <div class="campo">
+        <label for="arquivo">Arquivo da secretaria</label>
+        <input id="arquivo" type="file" accept=".csv,.xlsx" aria-describedby="arquivo-dica">
+        <p class="dica" id="arquivo-dica">Formatos .csv ou .xlsx. Colunas: matrícula, nome, curso, período, campus e e-mail.</p>
+      </div>
+      <div class="acoes">
+        <button class="botao botao--primario" type="submit" data-estado="alunos-vazio alunos alunos-arquivo" hidden><span class="ico ico-enviar" aria-hidden="true"></span>Importar e validar</button>
+        <button class="botao botao--primario" type="button" disabled aria-busy="true" data-estado="alunos-validando" hidden><span class="girando" aria-hidden="true"></span>Validando…</button>
+        <a class="botao botao--texto" href="#" data-aviso="Modelo baixado: modelo-alunos.xlsx (protótipo, nenhum arquivo real é gerado)."><span class="ico ico-baixar" aria-hidden="true"></span>Baixar modelo</a>
+      </div>
+      <div id="regiao-aviso" class="alerta alerta--info" role="status" hidden><span class="ico ico-info" aria-hidden="true"></span><div class="alerta__corpo"><p data-texto></p></div></div>
+    </form>
+
+    <form class="painel" data-validar data-ir-estado="alunos" novalidate aria-labelledby="titulo-cadastrar">
+      <h2 id="titulo-cadastrar">Cadastrar um aluno</h2>
+      <div class="grade grade--2">
+        <div class="campo">
+          <label for="al-matricula">Matrícula</label>
+          <input id="al-matricula" type="text" inputmode="numeric" required aria-describedby="al-matricula-erro">
+          <p class="campo__erro" id="al-matricula-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe a matrícula.</p>
+        </div>
+        <div class="campo">
+          <label for="al-nome">Nome</label>
+          <input id="al-nome" type="text" autocomplete="off" required aria-describedby="al-nome-erro">
+          <p class="campo__erro" id="al-nome-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe o nome.</p>
+        </div>
+        <div class="campo"><label for="al-curso">Curso</label><select id="al-curso"><option>Nome do curso</option></select></div>
+        <div class="campo"><label for="al-periodo">Período</label><select id="al-periodo"><option>0º período</option></select></div>
+        <div class="campo"><label for="al-campus">Campus</label><select id="al-campus"><option>Campus 1</option><option>Campus 2</option></select></div>
+        <div class="campo"><label for="al-email">E-mail institucional</label><input id="al-email" type="email"></div>
+      </div>
+      <button class="botao botao--secundario" type="submit"><span class="ico ico-mais" aria-hidden="true"></span>Cadastrar aluno</button>
+    </form>
+  </div>
+</section>
+
+<section aria-label="Validação em andamento" data-estado="alunos-validando" hidden>
+  <div class="painel" role="status">
+    <p class="linha"><span class="girando" aria-hidden="true"></span><strong>Validando 640 de 1.260 registros</strong></p>
+    <div class="progresso" aria-hidden="true"><span style="--pct: 51%"></span></div>
+    <p class="texto-suave texto-pequeno">Conferindo campos em branco, matrículas repetidas e nomes de curso e campus.</p>
+  </div>
+</section>
+
+<section aria-label="Arquivo não lido" data-estado="alunos-arquivo" hidden>
+  <div class="alerta alerta--erro" role="alert" data-foco>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Não foi possível ler o arquivo</p>
+      <p>O arquivo <span class="mono">alunos.pdf</span> não é uma planilha. Envie um .csv ou .xlsx com as colunas do modelo.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Nenhum aluno carregado" data-estado="alunos-vazio" hidden>
+  <div class="vazio">
+    <span class="ico ico-grupo ico--g" aria-hidden="true"></span>
+    <h2>Nenhum aluno carregado ainda</h2>
+    <p>Importe a planilha da secretaria ou cadastre os alunos um a um. Só entram na distribuição os alunos da lista que fizeram a inscrição.</p>
+  </div>
+</section>
+
+<section aria-labelledby="titulo-resultado" data-estado="alunos" hidden>
+  <h2 id="titulo-resultado" data-foco>Resultado da validação</h2>
+  <dl class="metricas">
+    <div class="metrica"><dt>Registros lidos</dt><dd><span class="metrica__valor">1.260</span><span class="metrica__nota">arquivo alunos-0000.xlsx</span></dd></div>
+    <div class="metrica"><dt>Aceitos</dt><dd><span class="metrica__valor">1.248</span><span class="metrica__nota"><span class="pilula pilula--ok"><span class="ico ico-ok" aria-hidden="true"></span>Prontos para distribuir</span></span></dd></div>
+    <div class="metrica"><dt>Com pendência</dt><dd><span class="metrica__valor">12</span><span class="metrica__nota"><span class="pilula pilula--atencao"><span class="ico ico-pendente" aria-hidden="true"></span>Precisam de correção</span></span></dd></div>
+  </dl>
+
+  <div id="regiao-correcao" class="alerta alerta--ok" role="status" hidden><span class="ico ico-ok" aria-hidden="true"></span><div class="alerta__corpo"><p data-texto></p></div></div>
+
+  <div class="tabela-rolagem">
+    <table class="tabela">
+      <caption>Com pendência (12)<span>Corrija aqui mesmo, sem importar a planilha de novo.</span></caption>
+      <thead><tr><th scope="col">Linha</th><th scope="col">Matrícula</th><th scope="col">Nome</th><th scope="col">Dado a corrigir</th><th scope="col"><span class="vh">Ação</span></th></tr></thead>
+      <tbody>
+        <tr class="linha--atencao"><td class="mono">0045</td><td class="mono">000000045</td><td>Nome do aluno</td><td><strong>Matrícula repetida:</strong> igual à da linha 0012</td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0045</span></button></td></tr>
+        <tr class="linha--atencao"><td class="mono">0102</td><td class="mono">000000102</td><td>Nome do aluno</td><td><strong>E-mail em branco</strong></td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0102</span></button></td></tr>
+        <tr class="linha--atencao"><td class="mono">0233</td><td class="mono">000000233</td><td>Nome do aluno</td><td><strong>Curso não encontrado:</strong> “ADM” não está na lista de cursos</td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0233</span></button></td></tr>
+        <tr class="linha--atencao"><td class="mono">0410</td><td><span class="texto-suave">em branco</span></td><td>Nome do aluno</td><td><strong>Matrícula em branco</strong></td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0410</span></button></td></tr>
+        <tr class="linha--atencao"><td class="mono">0587</td><td class="mono">000000587</td><td>Nome do aluno</td><td><strong>Campus não encontrado:</strong> “Campus 9” não está na configuração</td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0587</span></button></td></tr>
+        <tr class="linha--atencao"><td class="mono">0901</td><td class="mono">000000901</td><td>Nome do aluno</td><td><strong>Período em branco</strong></td><td><button class="botao botao--secundario botao--pequeno" type="button" data-abrir-dialogo="#dialogo-corrigir">Corrigir<span class="vh"> linha 0901</span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="texto-suave texto-pequeno">Mostrando 6 de 12 registros com pendência.</p>
+
+  <details class="expandir">
+    <summary>Ver aceitos (1.248)</summary>
+    <div class="expandir__corpo">
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <caption class="vh">Registros aceitos</caption>
+          <thead><tr><th scope="col">Linha</th><th scope="col">Matrícula</th><th scope="col">Nome</th><th scope="col">Curso</th><th scope="col">Período</th><th scope="col">Campus</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">0001</td><td class="mono">000000001</td><td>Nome do aluno</td><td>Nome do curso</td><td>0º</td><td>Campus 1</td></tr>
+            <tr><td class="mono">0002</td><td class="mono">000000002</td><td>Nome do aluno</td><td>Nome do curso</td><td>0º</td><td>Campus 1</td></tr>
+            <tr><td class="mono">0003</td><td class="mono">000000003</td><td>Nome do aluno</td><td>Nome do curso</td><td>0º</td><td>Campus 2</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <div class="painel painel--destaque">
+    <h3>Confirmar a carga</h3>
+    <p>Entram na distribuição os <strong>1.248</strong> alunos aceitos que fizerem a inscrição. Os 12 com pendência ficam de fora até serem corrigidos, e você pode corrigir depois sem importar de novo.</p>
+    <div class="acoes">
+      <button class="botao botao--primario" type="button" data-ir-estado="alunos-confirmado">Confirmar carga com 1.248 alunos</button>
+      <button class="botao botao--texto" type="button" data-ir-estado="alunos-vazio">Cancelar importação</button>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Carga confirmada" data-estado="alunos-confirmado" hidden>
+  <div class="alerta alerta--ok" role="status" data-foco>
+    <span class="ico ico-ok" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Carga confirmada</p>
+      <p>1.248 alunos disponíveis para a distribuição. 12 registros continuam com pendência e podem ser corrigidos nesta tela.</p>
+      <div class="acoes">
+        <a class="botao botao--primario" href="distribuicao.html#gerar">Gerar distribuição</a>
+        <button class="botao botao--texto" type="button" data-ir-estado="alunos">Corrigir pendências</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog class="dialogo" id="dialogo-corrigir" aria-labelledby="titulo-corrigir">
+  <form class="dialogo__corpo" novalidate>
+    <h2 id="titulo-corrigir">Corrigir linha 0102</h2>
+    <dl class="resumo">
+      <div><dt>Matrícula</dt><dd class="mono">000000102</dd></div>
+      <div><dt>Nome</dt><dd>Nome do aluno</dd></div>
+    </dl>
+    <div class="campo">
+      <label for="corrige-email">E-mail institucional</label>
+      <input id="corrige-email" type="email" aria-describedby="corrige-email-dica">
+      <p class="dica" id="corrige-email-dica">Este era o único dado faltando nesta linha.</p>
+    </div>
+    <div class="acoes acoes--fim">
+      <button class="botao botao--texto" type="button" data-fechar-dialogo>Cancelar</button>
+      <button class="botao botao--primario" type="button" data-fechar-dialogo data-aviso-alvo="#regiao-correcao" data-aviso="Linha 0102 corrigida. Agora são 11 registros com pendência.">Salvar correção</button>
+    </div>
+  </form>
+</dialog>
+</div>
+</main>
+<footer><p>Sistema de alocação do Teste de Progresso</p><p>Edição 0000/0</p></footer>
+</body>
+</html>

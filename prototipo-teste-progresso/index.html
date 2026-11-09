@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Alocação do Teste de Progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/prototipo.js" defer></script>
+</head>
+<body class="perfil-aluno">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<aside class="proto nao-imprimir" aria-label="Controles do protótipo">
+  <div class="proto__interno">
+    <details class="proto__telas"><summary>Telas (9)</summary><ul><li><a href="index.html" aria-current="page"><strong>T01</strong>Acesso</a></li><li><a href="inscricao.html"><strong>T03</strong>Inscrição</a></li><li><a href="minha-prova.html"><strong>T02 T04 T05</strong>Minha prova</a></li><li><a href="painel.html"><strong>T06</strong>Painel</a></li><li><a href="preparar-edicao.html"><strong>T07 T08 T09</strong>Preparar a edição</a></li><li><a href="distribuicao.html"><strong>T10 T11 T12</strong>Distribuição</a></li><li><a href="remanejamento.html"><strong>T13</strong>Remanejamento</a></li><li><a href="listas.html"><strong>T14</strong>Listas e relatórios</a></li><li><a href="lista-fiscal.html"><strong>T14</strong>Lista do fiscal</a></li></ul></details>
+    <p class="proto__id"><strong>T01</strong>Acesso, celular</p>
+    <div class="proto__estados" role="group" aria-label="Estado exibido nesta tela"><span>Estado:</span><button type="button" data-estado-alvo="padrao" aria-pressed="true">Padrão</button><button type="button" data-estado-alvo="carregando" aria-pressed="false">Carregando</button><button type="button" data-estado-alvo="erro" aria-pressed="false">Erro</button><button type="button" data-estado-alvo="sem-conexao" aria-pressed="false">Sem conexão</button><button type="button" data-estado-alvo="sem-acesso" aria-pressed="false">Matrícula inativa</button><button type="button" data-estado-alvo="recuperar" aria-pressed="false">Recuperar senha</button><button type="button" data-estado-alvo="recuperar-enviado" aria-pressed="false">Pedido enviado</button></div>
+    <p class="proto__dica">Digite “coord” ou “fiscal” no primeiro campo para entrar com esse perfil; “erro” simula dados que não conferem.</p>
+    <p class="vh" id="anuncio-proto" aria-live="polite"></p>
+  </div>
+</aside>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="marca" href="index.html"><span class="marca__selo" aria-hidden="true"></span><span>Teste de Progresso<span class="marca__perfil">Sistema de alocação</span></span></a>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<section class="cabecalho-pagina" aria-labelledby="titulo">
+  <h1 id="titulo">Entrar no sistema</h1>
+  <p class="subtitulo">Inscrição, sala e comprovante do Teste de Progresso.</p>
+</section>
+
+<section aria-label="Formulário de acesso" data-estado="padrao carregando erro sem-conexao sem-acesso">
+  <div class="alerta alerta--erro" role="alert" data-estado="erro" data-foco hidden>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Não foi possível entrar</p>
+      <p>A matrícula ou e-mail e a senha não conferem. Confira os dois campos e tente de novo.</p>
+      <p><a href="#recuperar">Esqueci minha senha</a></p>
+    </div>
+  </div>
+
+  <div class="alerta alerta--erro" role="alert" data-estado="sem-conexao" data-foco hidden>
+    <span class="ico ico-bloqueio" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Sem conexão com a internet</p>
+      <p>Seus dados não foram enviados. Confira o Wi-Fi ou os dados móveis e toque em Entrar de novo.</p>
+    </div>
+  </div>
+
+  <div class="alerta alerta--atencao" role="alert" data-estado="sem-acesso" data-foco hidden>
+    <span class="ico ico-pendente" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Sua matrícula não está ativa para o Teste de Progresso</p>
+      <p>Só alunos regularmente matriculados fazem a inscrição. Procure a secretaria do seu curso para conferir sua matrícula.</p>
+    </div>
+  </div>
+
+  <form class="formulario" data-login data-validar novalidate aria-labelledby="titulo">
+    <div class="campo">
+      <label for="usuario">Matrícula ou e-mail institucional</label>
+      <input id="usuario" name="usuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="usuario-dica usuario-erro">
+      <p class="dica" id="usuario-dica">Alunos usam a matrícula. Coordenação e fiscais usam o e-mail institucional.</p>
+      <p class="campo__erro" id="usuario-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe sua matrícula ou e-mail institucional.</p>
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha</label>
+      <div class="campo-senha">
+        <input id="senha" name="senha" type="password" autocomplete="current-password" required aria-describedby="senha-erro">
+        <button class="botao botao--secundario" type="button" data-mostrar-senha="#senha" aria-pressed="false" aria-controls="senha">
+          <span class="ico ico-olho" aria-hidden="true"></span><span data-rotulo>Mostrar</span><span class="vh"> senha</span>
+        </button>
+      </div>
+      <p class="campo__erro" id="senha-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe sua senha.</p>
+    </div>
+
+    <p><a href="#recuperar">Esqueci minha senha</a></p>
+
+    <div class="pilha pilha--curta">
+      <button class="botao botao--primario botao--largo" type="submit" data-estado="padrao erro sem-conexao sem-acesso">Entrar</button>
+      <button class="botao botao--primario botao--largo" type="button" disabled aria-busy="true" data-estado="carregando" hidden>
+        <span class="girando" aria-hidden="true"></span>Entrando…
+      </button>
+      <p class="texto-suave texto-pequeno" role="status" data-estado="carregando" hidden>Conferindo seus dados. Isso leva poucos segundos.</p>
+    </div>
+  </form>
+</section>
+
+<section aria-labelledby="titulo-recuperar" data-estado="recuperar" hidden>
+  <a class="voltar" href="#padrao"><span class="ico ico-seta-esq" aria-hidden="true"></span>Voltar para entrar</a>
+  <h2 id="titulo-recuperar" data-foco>Recuperar senha</h2>
+  <p>Informe sua matrícula ou e-mail institucional. As instruções vão para o e-mail institucional cadastrado.</p>
+  <form class="formulario" data-validar data-ir-estado="recuperar-enviado" novalidate>
+    <div class="campo">
+      <label for="recuperar-usuario">Matrícula ou e-mail institucional</label>
+      <input id="recuperar-usuario" name="recuperar-usuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="recuperar-usuario-erro">
+      <p class="campo__erro" id="recuperar-usuario-erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe sua matrícula ou e-mail institucional.</p>
+    </div>
+    <button class="botao botao--primario botao--largo" type="submit">Enviar instruções</button>
+  </form>
+</section>
+
+<section aria-label="Pedido de nova senha" data-estado="recuperar-enviado" hidden>
+  <div class="alerta alerta--ok" role="status" data-foco>
+    <span class="ico ico-ok" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Pedido registrado</p>
+      <p>Se os dados estiverem cadastrados, as instruções chegam ao seu e-mail institucional em alguns minutos. Confira também a caixa de spam.</p>
+      <p>Não recebeu? Procure a secretaria do seu curso.</p>
+    </div>
+  </div>
+  <div class="acoes"><a class="botao botao--secundario botao--largo" href="#padrao">Voltar para entrar</a></div>
+</section>
+</main>
+<footer><p>Sistema de alocação do Teste de Progresso</p><p>Problemas para entrar? Procure a secretaria do seu curso.</p></footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inscrição | Teste de Progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/prototipo.js" defer></script>
+</head>
+<body class="perfil-aluno">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<aside class="proto nao-imprimir" aria-label="Controles do protótipo">
+  <div class="proto__interno">
+    <details class="proto__telas"><summary>Telas (9)</summary><ul><li><a href="index.html"><strong>T01</strong>Acesso</a></li><li><a href="inscricao.html" aria-current="page"><strong>T03</strong>Inscrição</a></li><li><a href="minha-prova.html"><strong>T02 T04 T05</strong>Minha prova</a></li><li><a href="painel.html"><strong>T06</strong>Painel</a></li><li><a href="preparar-edicao.html"><strong>T07 T08 T09</strong>Preparar a edição</a></li><li><a href="distribuicao.html"><strong>T10 T11 T12</strong>Distribuição</a></li><li><a href="remanejamento.html"><strong>T13</strong>Remanejamento</a></li><li><a href="listas.html"><strong>T14</strong>Listas e relatórios</a></li><li><a href="lista-fiscal.html"><strong>T14</strong>Lista do fiscal</a></li></ul></details>
+    <p class="proto__id"><strong>T03</strong>Inscrição, celular</p>
+    <div class="proto__estados" role="group" aria-label="Estado exibido nesta tela"><span>Estado:</span><button type="button" data-estado-alvo="formulario" aria-pressed="true">Com pendência</button><button type="button" data-estado-alvo="erro" aria-pressed="false">Erro de validação</button><button type="button" data-estado-alvo="enviando" aria-pressed="false">Enviando</button><button type="button" data-estado-alvo="sucesso" aria-pressed="false">Sucesso</button><button type="button" data-estado-alvo="encerrada" aria-pressed="false">Inscrições encerradas</button><button type="button" data-estado-alvo="fora-da-lista" aria-pressed="false">Fora da lista</button></div>
+    <p class="vh" id="anuncio-proto" aria-live="polite"></p>
+  </div>
+</aside>
+<header class="topo">
+  <div class="topo__interno">
+    <a class="marca" href="minha-prova.html"><span class="marca__selo" aria-hidden="true"></span><span>Teste de Progresso<span class="marca__perfil">Área do aluno</span></span></a>
+    <nav aria-label="Menu principal">
+      <ul><li><a href="minha-prova.html"><span class="ico ico-casa" aria-hidden="true"></span>Minha prova</a></li><li><a href="index.html"><span class="ico ico-sair" aria-hidden="true"></span>Sair</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1">
+<section class="cabecalho-pagina" aria-labelledby="titulo">
+  <a class="voltar" href="minha-prova.html"><span class="ico ico-seta-esq" aria-hidden="true"></span>Início</a>
+  <h1 id="titulo">Inscrição no Teste de Progresso</h1>
+  <p class="subtitulo">Edição 0000/0. Inscrições até 00/00/0000.</p>
+</section>
+
+<section aria-label="Formulário de inscrição" data-estado="formulario erro enviando">
+  <div class="alerta alerta--erro" role="alert" data-resumo-erros data-estado="erro" tabindex="-1" data-foco hidden>
+    <span class="ico ico-erro" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Corrija <span data-contagem>2 campos</span> para continuar</p>
+      <ul>
+        <li><a href="#celular">Informe um celular com DDD</a></li>
+        <li><a href="#confirmo">Marque a confirmação dos dados</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="formulario" data-validar data-ir-estado="enviando" data-depois="sucesso" novalidate aria-labelledby="titulo">
+    <fieldset>
+      <legend>Seus dados</legend>
+      <p class="dica">Vieram do cadastro da secretaria. Se algo estiver errado, procure a secretaria antes de confirmar.</p>
+      <dl class="resumo">
+        <div><dt>Nome</dt><dd>Nome do aluno</dd></div>
+        <div><dt>Matrícula</dt><dd class="mono">000000000</dd></div>
+        <div><dt>Curso</dt><dd>Nome do curso</dd></div>
+        <div><dt>Período</dt><dd>0º período</dd></div>
+        <div><dt>Campus de vínculo</dt><dd>Campus 1</dd></div>
+      </dl>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contato</legend>
+      <div class="campo">
+        <label for="email">E-mail institucional</label>
+        <input id="email" name="email" type="email" value="nome.do.aluno@instituicao.edu.br" readonly aria-describedby="email-dica">
+        <p class="dica" id="email-dica">Usado para recuperar a senha. Só a secretaria altera.</p>
+      </div>
+      <div class="campo campo--pendente">
+        <label for="celular">Celular <span class="pilula pilula--atencao"><span class="ico ico-pendente" aria-hidden="true"></span>Pendente</span></label>
+        <input id="celular" name="celular" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="celular-dica celular-erro" data-invalido-em="erro">
+        <p class="dica" id="celular-dica">Com DDD, no formato (00) 00000-0000. A coordenação usa para falar com você no dia da prova.</p>
+        <p class="campo__erro" id="celular-erro" data-estado="erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Informe um celular com DDD, por exemplo (00) 00000-0000.</p>
+      </div>
+    </fieldset>
+
+    <div class="campo">
+      <label class="marcar" for="confirmo">
+        <input id="confirmo" name="confirmo" type="checkbox" required aria-describedby="confirmo-erro" data-invalido-em="erro">
+        <span>Confirmo que meus dados estão corretos e que vou fazer o Teste de Progresso.</span>
+      </label>
+      <p class="campo__erro" id="confirmo-erro" data-estado="erro" hidden><span class="ico ico-erro" aria-hidden="true"></span>Marque a confirmação para concluir a inscrição.</p>
+    </div>
+
+    <div class="acoes acoes--celular-pilha">
+      <button class="botao botao--primario" type="submit" data-estado="formulario erro">Confirmar inscrição</button>
+      <button class="botao botao--primario" type="button" disabled aria-busy="true" data-estado="enviando" hidden><span class="girando" aria-hidden="true"></span>Confirmando…</button>
+      <a class="botao botao--texto" href="minha-prova.html">Cancelar</a>
+    </div>
+    <p class="texto-suave texto-pequeno" role="status" data-estado="enviando" hidden>Registrando sua inscrição.</p>
+  </form>
+</section>
+
+<section aria-label="Inscrição concluída" data-estado="sucesso" hidden>
+  <div class="alerta alerta--ok" role="status" data-foco>
+    <span class="ico ico-ok" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Inscrição confirmada</p>
+      <p>Protocolo <span class="mono">0000-0000</span>, registrado em 00/00/0000 às 00h00.</p>
+    </div>
+  </div>
+  <div class="painel">
+    <h2>Próximo passo</h2>
+    <p>Quando a coordenação publicar as salas, sua sala aparece na tela inicial e em Minha sala. Previsão: <strong>00/00/0000</strong>.</p>
+    <p class="texto-suave">Você não precisa fazer mais nada agora.</p>
+  </div>
+  <div class="acoes"><a class="botao botao--primario botao--largo" href="minha-prova.html#aguardando">Voltar ao início</a></div>
+</section>
+
+<section aria-label="Inscrições encerradas" data-estado="encerrada" hidden>
+  <div class="alerta alerta--indisponivel" role="status" data-foco>
+    <span class="ico ico-bloqueio" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Inscrições encerradas</p>
+      <p>O período de inscrição foi de 00/00/0000 a 00/00/0000. Se você perdeu o prazo, procure a coordenação do seu curso.</p>
+    </div>
+  </div>
+  <div class="acoes"><a class="botao botao--secundario botao--largo" href="minha-prova.html">Voltar ao início</a></div>
+</section>
+
+<section aria-label="Aluno fora da lista" data-estado="fora-da-lista" hidden>
+  <div class="alerta alerta--atencao" role="status" data-foco>
+    <span class="ico ico-pendente" aria-hidden="true"></span>
+    <div class="alerta__corpo">
+      <p class="alerta__titulo">Seu nome não está na lista desta edição</p>
+      <p>A inscrição só abre para quem está na lista de alunos enviada pela coordenação. Procure a coordenação do seu curso e informe sua matrícula: <span class="mono">000000000</span>.</p>
+    </div>
+  </div>
+  <div class="acoes"><a class="botao botao--secundario botao--largo" href="minha-prova.html">Voltar ao início</a></div>
+</section>
+</main>
+<footer><p>Sistema de alocação do Teste de Progresso</p><p>Dúvidas sobre sua sala? Procure a coordenação do seu curso.</p></footer>
+</body>
+</html>
