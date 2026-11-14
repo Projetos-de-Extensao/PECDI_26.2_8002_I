@@ -13,17 +13,17 @@ title: Histórias de Usuário
 | 12/10/2026 | 2.0 | Revisão de coerência com os demais documentos da pasta: histórias consolidadas e renumeradas, regras de negócio e requisitos não funcionais separados, prioridades reavaliadas, lacunas incluídas e seções duplicadas removidas | Equipe |
 | 14/11/2026 | 2.1 | Consolidação: códigos TL/TA aplicados à Análise de Tarefas, escopo e natureza do projeto confirmados, turno na inscrição, prédio deixa de ser nível de cadastro, decisões pendentes movidas para decisoes-pendentes.md, seção duplicada de próximos passos removida, IDs BS01–BS15 acrescentados à rastreabilidade | Equipe |
 
-> **Atenção — premissas desta versão.** Os pontos marcados com **[a confirmar]** dependem de decisão da equipe ou da coordenação e estão listados em [decisoes-pendentes.md](../decisoes-pendentes.md). As prioridades da seção 7 são uma proposta de revisão e precisam ser validadas com a coordenação.
+> **Atenção — premissas desta versão.** Os pontos marcados com **[a confirmar]** dependem de decisão da equipe ou da coordenação. As prioridades da seção 7 são uma proposta de revisão e precisam ser validadas com a coordenação.
 
 ## 1. Introdução
 
 Este documento reúne as histórias de usuário do sistema de alocação de alunos para o Teste de Progresso, derivadas de:
 
-- [Análise de Tarefas I](./analise-de-tarefas.md): personas, telas, tarefas e regras;
-- [Brainstorm](../descoberta/brainstorm.md): requisitos elicitados com a equipe;
-- [5W2H](../descoberta/5w2h.md): visão geral e visão de produto;
-- [Mapa Mental](../descoberta/mapa-mental.md): atores, fluxo e regras gerais;
-- [Pesquisa](../descoberta/pesquisa.md): apenas as conclusões transversais sobre mobile, acessibilidade e clareza de acesso (ver seção 5).
+- Análise de Tarefas I: personas, telas, tarefas e regras;
+- Brainstorm: requisitos elicitados com a equipe;
+- 5W2H: visão geral e visão de produto;
+- Mapa Mental: atores, fluxo e regras gerais;
+- Pesquisa: apenas as conclusões transversais sobre mobile, acessibilidade e clareza de acesso (ver seção 5).
 
 O documento apresenta as personas, as histórias com critérios de aceitação, as regras de negócio, os requisitos não funcionais, os épicos, a priorização (MoSCoW) e o mapeamento entre histórias, telas e tarefas.
 
@@ -48,7 +48,7 @@ Para evitar a confusão entre telas e tarefas, esta versão adota prefixos disti
 
 ## 2. Personas
 
-As descrições completas (necessidades, objetivos e dificuldades) estão na [Análise de Tarefas I, seção 3](./analise-de-tarefas.md), que é a fonte única. Aqui consta apenas o resumo.
+As descrições completas (necessidades, objetivos e dificuldades) estão na Análise de Tarefas I, seção 3, que é a fonte única. Aqui consta apenas o resumo.
 
 | Persona | Resumo | Histórias |
 |---|---|---|
@@ -209,7 +209,7 @@ A Pesquisa investiga o acesso a uma prova online. Para este escopo, apenas as co
 
 ## 8. Telas de interface
 
-As descrições completas estão na [Análise de Tarefas I, seção 5](./analise-de-tarefas.md). Aqui constam apenas os códigos, para consulta. As telas deixam de usar o prefixo "T".
+As descrições completas estão na Análise de Tarefas I, seção 5. Aqui constam apenas os códigos, para consulta. As telas deixam de usar o prefixo "T".
 
 | Código | Tela | Código | Tela |
 |---|---|---|---|
@@ -224,7 +224,7 @@ As descrições completas estão na [Análise de Tarefas I, seção 5](./analise
 
 ## 9. Mapeamento: história, tela e tarefa
 
-As tarefas (TA01 a TA11) estão descritas na [Análise de Tarefas I, seção 6](./analise-de-tarefas.md).
+As tarefas (TA01 a TA11) estão descritas na Análise de Tarefas I, seção 6.
 
 | História | Tela | Tarefa | Origem |
 |---|---|---|---|
@@ -269,10 +269,6 @@ As tarefas (TA01 a TA11) estão descritas na [Análise de Tarefas I, seção 6](
 | US19 | US15 | Painel da coordenação |
 | — | US10 | Nova: alocação por necessidades específicas |
 | — | US14 | Nova: ajuste após a publicação |
-
-## 10. Decisões pendentes e próximos passos
-
-As decisões em aberto estão centralizadas em [decisoes-pendentes.md](../decisoes-pendentes.md). Cada ponto marcado com **[a confirmar]** neste documento corresponde a uma delas.
 
 ### Próximos passos
 

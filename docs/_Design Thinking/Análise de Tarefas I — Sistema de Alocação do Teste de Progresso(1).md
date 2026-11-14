@@ -8,7 +8,7 @@ title: Análise de Tarefas I
 **Data:** 14/09/2026  
 **Projeto:** sistema web para inscrição, alocação e consulta de salas do Teste de Progresso  
 **Técnica:** Análise Hierárquica de Tarefas (AHT)  
-**Códigos:** TL = tela, TA = tarefa. Histórias (US), regras (RN) e requisitos não funcionais (RNF) estão em [Histórias de Usuário](./historias-de-usuario(1).md)
+**Códigos:** TL = tela, TA = tarefa. Histórias (US), regras (RN) e requisitos não funcionais (RNF) estão em Histórias de Usuário.
 
 ## 1. Apresentação
 

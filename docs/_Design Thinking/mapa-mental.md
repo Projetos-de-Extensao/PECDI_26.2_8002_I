@@ -5,7 +5,7 @@ title: Mapa Mental
 
 # Sistema de Alocação de Alunos para o Teste de Progresso
 
-Visão resumida de objetivo, atores, fluxo e regras. Os detalhes estão em [Histórias de Usuário](../requisitos/historias-de-usuario.md) e [Análise de Tarefas](../requisitos/analise-de-tarefas.md).
+Visão resumida de objetivo, atores, fluxo e regras. Os detalhes estão em Histórias de Usuário e Análise de Tarefas.
 
 ```mermaid
 flowchart LR
