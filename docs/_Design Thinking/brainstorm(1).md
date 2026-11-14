@@ -61,7 +61,7 @@ A equipe se reuniu para debater ideias gerais sobre o projeto por chamada de ví
 
 ## Requisitos elicitados
 
-> Os requisitos abaixo foram redigidos na consolidação de 14/11/2026 **a partir das respostas Q1 a Q6**, sem acrescentar requisitos novos. A priorização e os critérios de aceitação estão em [Histórias de Usuário](../requisitos/historias-de-usuario.md), onde cada BS aparece na coluna "Origem" do mapeamento.
+> Os requisitos abaixo foram redigidos na consolidação de 14/11/2026 **a partir das respostas Q1 a Q6**, sem acrescentar requisitos novos. A priorização e os critérios de aceitação estão em [Histórias de Usuário](./historias-de-usuario(1).md), onde cada BS aparece na coluna "Origem" do mapeamento.
 
 | ID | Descrição | Origem |
 | --- | --- | --- |
