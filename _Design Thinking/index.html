@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste de Progresso – Protótipo de Alocação</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.45; color: #222; background: #fff; }
+  .faixa { background: #eee; border-bottom: 1px dashed #777; text-align: center; font-size: .8em; padding: 4px 8px; }
+  header { border-bottom: 3px solid #222; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; align-items: center; }
+  header h1 { margin: 0; font-size: 1.1em; }
+  .layout { display: flex; flex-wrap: wrap; min-height: 70vh; }
+  nav { width: 220px; border-right: 2px solid #222; padding: 12px; background: #f5f5f5; }
+  nav button { display: block; width: 100%; text-align: left; margin: 0 0 6px; }
+  main { flex: 1; min-width: 260px; padding: 16px; max-width: 920px; }
+  @media (max-width: 640px) { nav { width: 100%; border-right: 0; border-bottom: 2px solid #222; } }
+ 
+  h2 { margin-top: 0; border-bottom: 2px solid #222; padding-bottom: 6px; }
+  h3 { margin: 18px 0 6px; }
+  button, select, input { font: inherit; padding: 8px 10px; border: 2px solid #222; background: #fff; color: #222; border-radius: 0; }
+  input, select { width: 100%; max-width: 380px; }
+  button { cursor: pointer; background: #ddd; }
+  button.ativo { background: #222; color: #fff; }
+  button.sec { background: #fff; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  :focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  label { display: block; font-weight: 700; margin: 12px 0 4px; }
+ 
+  .caixa { border: 2px solid #222; padding: 12px; margin: 12px 0; }
+  .alerta { border: 2px dashed #222; padding: 10px; margin: 12px 0; background: #f3f3f3; }
+  .alerta.erro { border-style: solid; background: #e6e6e6; }
+  .alerta.ok { border-style: solid; background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .num { font-size: 2em; font-weight: 700; }
+  .pequeno { font-size: .85em; color: #555; }
+  .acoes { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+ 
+  table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: .95em; }
+  th, td { border: 1px solid #222; padding: 6px 8px; text-align: left; }
+  th { background: #ddd; }
+  .tabela { overflow-x: auto; }
+ 
+  .qr { width: 110px; height: 110px; border: 2px solid #222; display: flex; align-items: center; justify-content: center;
+        background: repeating-linear-gradient(45deg, #ddd, #ddd 6px, #fff 6px, #fff 12px); font-weight: 700; }
+  .foto { width: 80px; height: 80px; border: 2px solid #222; display: flex; align-items: center; justify-content: center; font-size: .75em; }
+ 
+  @media print { .faixa, header, nav, .no-print { display: none !important; } .layout { display: block; } }
+</style>
+</head>
+<body>
+ 
+<div class="faixa">PROTÓTIPO DE BAIXA FIDELIDADE · somente front-end · dados fictícios · nada é salvo ao recarregar a página</div>
+ 
+<header>
+  <h1>Sistema de Alocação – Teste de Progresso</h1>
+  <div id="usuario"></div>
+</header>
+ 
+<div class="layout">
+  <nav id="menu" aria-label="Menu" hidden></nav>
+  <main id="tela" aria-live="polite"></main>
+</div>
+ 
+<script>
+(function () {
+  // ---------- Dados fictícios ----------
+  var estado = {
+    perfil: null, tela: null, usuario: '', msg: null,
+    inscrito: false, alunosCarregados: false, gerado: false, publicado: false,
+    config: { data: '2026-11-20', hora: '09:00', campus: 'Campus Centro' },
+    salas: [
+      { id: 1, cod: 'A101', predio: 'Prédio A', cap: 4, rec: 'Projetor', ativa: true },
+      { id: 2, cod: 'A102', predio: 'Prédio A', cap: 4, rec: 'Acessibilidade', ativa: true },
+      { id: 3, cod: 'B201', predio: 'Prédio B', cap: 3, rec: 'Projetor', ativa: true },
+      { id: 4, cod: 'B202', predio: 'Prédio B', cap: 4, rec: '-', ativa: true }
+    ],
+    alunos: [
+      { id: 1,  nome: 'Ana Souza',      mat: '2026001', curso: 'CDIA',           pend: null },
+      { id: 2,  nome: 'Bruno Lima',     mat: '2026002', curso: 'CDIA',           pend: null },
+      { id: 3,  nome: 'Carla Dias',     mat: '2026003', curso: 'Engenharia',     pend: null },
+      { id: 4,  nome: 'Diego Rocha',    mat: '2026004', curso: 'Administração',  pend: null },
+      { id: 5,  nome: 'Elisa Nunes',    mat: '2026005', curso: 'CDIA',           pend: null },
+      { id: 6,  nome: 'Felipe Costa',   mat: '2026006', curso: 'Direito',        pend: null },
+      { id: 7,  nome: 'Gabriela Alves', mat: '2026007', curso: 'Economia',       pend: null },
+      { id: 8,  nome: 'Heitor Matos',   mat: '2026008', curso: 'CDIA',           pend: null },
+      { id: 9,  nome: 'Isabela Prado',  mat: '2026009', curso: 'Engenharia',     pend: null },
+      { id: 10, nome: 'João Pereira',   mat: '2026010', curso: 'Administração',  pend: null },
+      { id: 11, nome: 'Karina Melo',    mat: '',        curso: 'Direito',        pend: 'Matrícula ausente' },
+      { id: 12, nome: 'Lucas Ferraz',   mat: '2026012', curso: '',               pend: 'Curso não informado' }
+    ],
+    aloc: {}, avisoAluno: null, atualizadoEm: '--:--', log: [],
+    filtroRel: '0', filtroFiscal: '1'
+  };
+  var ALUNO_LOGADO = 1;
+ 
+  var MENUS = {
+    aluno:  [['a_inicio', 'Início'], ['a_aloc', 'Minha alocação'], ['a_comp', 'Comprovante']],
+    coord:  [['c_painel', 'Painel'], ['c_config', 'Configuração'], ['c_salas', 'Salas'], ['c_alunos', 'Alunos'],
+             ['c_dist', 'Distribuição'], ['c_remanej', 'Remanejar'], ['c_rel', 'Relatórios']],
+    fiscal: [['f_lista', 'Lista da sala']]
+  };
+  var NOMES = { aluno: 'Aluno', coord: 'Coordenação', fiscal: 'Fiscal' };
+ 
+  // ---------- Utilitários ----------
+  function esc(t) {
+    return String(t).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function agora() { return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); }
+  function fmtData(d) { var p = d.split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : d; }
+  function sala(id) { return estado.salas.filter(function (s) { return s.id === id; })[0]; }
+  function aluno(id) { return estado.alunos.filter(function (a) { return a.id === id; })[0]; }
+  function ocup(id) { var n = 0; for (var k in estado.aloc) { if (estado.aloc[k] === id) n++; } return n; }
+  function ativas() { return estado.salas.filter(function (s) { return s.ativa; }); }
+  function aptos() {
+    return estado.alunos.filter(function (a) { return !a.pend && (a.id !== ALUNO_LOGADO || estado.inscrito); });
+  }
+  function pendentes() { return estado.alunos.filter(function (a) { return a.pend; }); }
+  function semSala() { return aptos().filter(function (a) { return !estado.aloc[a.id]; }); }
+  function aviso(tipo, texto) { estado.msg = { tipo: tipo, texto: texto }; }
+  function registrar(t) { estado.log.push(agora() + ' – ' + t); estado.atualizadoEm = agora(); }
+  function opt(v, rotulo, sel) { return '<option value="' + esc(v) + '"' + (sel ? ' selected' : '') + '>' + esc(rotulo) + '</option>'; }
+  function bloqueio(txt) { return '<div class="alerta">' + txt + '</div>'; }
+ 
+  // ---------- Telas ----------
+  var telas = {};
+ 
+  telas.login = function () {
+    return '<h2>Entrar</h2>' +
+      '<form data-form="login" class="caixa">' +
+      '<label for="id">Matrícula ou e-mail institucional</label>' +
+      '<input id="id" name="id" autocomplete="off" placeholder="ex.: 2026001">' +
+      '<label for="perfil">Entrar como (apenas no protótipo)</label>' +
+      '<select id="perfil" name="perfil"><option value="aluno">Aluno</option><option value="coord">Coordenação acadêmica</option><option value="fiscal">Fiscal</option></select>' +
+      '<div id="erro" class="pequeno"></div>' +
+      '<div class="acoes"><button class="ativo" type="submit">Entrar</button></div>' +
+      '</form>';
+  };
+ 
+  // ----- Aluno -----
+  telas.a_inicio = function () {
+    var a = aluno(ALUNO_LOGADO);
+    var h = '<h2>Início</h2>' +
+      '<div class="caixa"><div style="display:flex;gap:12px;align-items:center"><div class="foto">FOTO</div><div>' +
+      '<strong>' + esc(a.nome) + '</strong><br>Matrícula: ' + esc(a.mat) + '<br>Curso: ' + esc(a.curso) +
+      '</div></div><p class="pequeno">Dados pré-preenchidos. Confira antes de confirmar.</p></div>' +
+      '<div class="caixa"><strong>Situação da inscrição:</strong> ' + (estado.inscrito ? 'Confirmada ✔' : 'Pendente') + '<div class="acoes">' +
+      (estado.inscrito ? '' : '<button class="ativo" data-acao="inscrever">Confirmar inscrição</button>') + '</div></div>';
+    if (estado.avisoAluno) h += '<div class="alerta erro"><strong>Aviso:</strong> ' + esc(estado.avisoAluno) + '</div>';
+    return h;
+  };
+ 
+  telas.a_aloc = function () {
+    var h = '<h2>Minha alocação</h2>';
+    if (!estado.publicado) return h + bloqueio('A alocação ainda não foi publicada. Volte mais tarde.');
+    var s = sala(estado.aloc[ALUNO_LOGADO]);
+    if (!s) return h + bloqueio('Você não foi alocado(a) a nenhuma sala. Procure a coordenação.');
+    if (estado.avisoAluno) h += '<div class="alerta erro"><strong>Aviso:</strong> ' + esc(estado.avisoAluno) + '</div>';
+    return h + '<table><tr><th>Data</th><td>' + fmtData(estado.config.data) + '</td></tr>' +
+      '<tr><th>Horário</th><td>' + esc(estado.config.hora) + '</td></tr>' +
+      '<tr><th>Campus</th><td>' + esc(estado.config.campus) + '</td></tr>' +
+      '<tr><th>Prédio</th><td>' + esc(s.predio) + '</td></tr>' +
+      '<tr><th>Sala</th><td><strong>' + esc(s.cod) + '</strong></td></tr></table>';
+  };
+ 
+  telas.a_comp = function () {
+    var h = '<h2>Comprovante</h2>';
+    var s = sala(estado.aloc[ALUNO_LOGADO]);
+    if (!estado.publicado || !s) return h + bloqueio('O comprovante fica disponível depois da publicação da alocação.');
+    var a = aluno(ALUNO_LOGADO);
+    return h + '<div class="caixa"><strong>Comprovante de alocação – Teste de Progresso</strong><p>' +
+      esc(a.nome) + ' · Matrícula ' + esc(a.mat) + '<br>' + fmtData(estado.config.data) + ' às ' + esc(estado.config.hora) +
+      '<br>' + esc(estado.config.campus) + ' · ' + esc(s.predio) + ' · Sala ' + esc(s.cod) + '</p>' +
+      '<div style="display:flex;gap:12px;align-items:center"><div class="qr">QR</div><div class="pequeno">Código de validação:<br><strong>TP-' + esc(a.mat) + '-' + esc(s.cod) + '</strong></div></div></div>' +
+      '<div class="acoes no-print"><button class="ativo" data-acao="imprimir">Imprimir / salvar PDF</button></div>';
+  };
+ 
+  // ----- Coordenação -----
+  telas.c_painel = function () {
+    var cap = ativas().reduce(function (t, s) { return t + s.cap; }, 0);
+    return '<h2>Painel</h2><div class="grid">' +
+      '<div class="caixa"><div class="num">' + (estado.alunosCarregados ? aptos().length : 0) + '</div>Alunos aptos</div>' +
+      '<div class="caixa"><div class="num">' + ativas().length + '</div>Salas disponíveis</div>' +
+      '<div class="caixa"><div class="num">' + cap + '</div>Capacidade total</div>' +
+      '<div class="caixa"><div class="num">' + Object.keys(estado.aloc).length + '</div>Alunos alocados</div>' +
+      '<div class="caixa"><div class="num">' + (estado.alunosCarregados ? pendentes().length : 0) + '</div>Pendências de cadastro</div>' +
+      '<div class="caixa"><div class="num">' + (estado.publicado ? 'Sim' : 'Não') + '</div>Distribuição publicada</div></div>' +
+      '<p class="pequeno">Fluxo: Configuração → Salas → Alunos → Distribuição (gerar, revisar, publicar).</p>';
+  };
+ 
+  telas.c_config = function () {
+    var c = estado.config;
+    return '<h2>Configuração da aplicação</h2><form data-form="config" class="caixa">' +
+      '<label for="data">Data da prova</label><input id="data" name="data" type="date" value="' + esc(c.data) + '">' +
+      '<label for="hora">Horário</label><input id="hora" name="hora" type="time" value="' + esc(c.hora) + '">' +
+      '<label for="campus">Campus</label><select id="campus" name="campus">' +
+      ['Campus Centro', 'Campus Barra', 'Campus Botafogo'].map(function (x) { return opt(x, x, x === c.campus); }).join('') + '</select>' +
+      '<div class="acoes"><button class="ativo" type="submit">Salvar</button></div></form>';
+  };
+ 
+  telas.c_salas = function () {
+    var linhas = estado.salas.map(function (s) {
+      return '<tr><td>' + esc(s.cod) + '</td><td>' + esc(s.predio) + '</td><td>' + s.cap + '</td><td>' + ocup(s.id) + '</td><td>' +
+        esc(s.rec) + '</td><td>' + (s.ativa ? 'Disponível' : 'Interditada') + '</td></tr>';
+    }).join('');
+    return '<h2>Salas</h2><div class="tabela"><table><tr><th>Sala</th><th>Prédio</th><th>Capacidade</th><th>Ocupação</th><th>Recursos</th><th>Status</th></tr>' + linhas + '</table></div>' +
+      '<h3>Cadastrar sala</h3><form data-form="sala" class="caixa">' +
+      '<label for="cod">Código da sala</label><input id="cod" name="cod" placeholder="ex.: C301">' +
+      '<label for="predio">Prédio</label><input id="predio" name="predio" placeholder="ex.: Prédio C">' +
+      '<label for="cap">Capacidade</label><input id="cap" name="cap" type="number" placeholder="ex.: 30">' +
+      '<label for="rec">Recursos</label><input id="rec" name="rec" placeholder="ex.: Projetor">' +
+      '<div class="acoes"><button class="ativo" type="submit">Adicionar sala</button></div></form>';
+  };
+ 
+  telas.c_alunos = function () {
+    var h = '<h2>Alunos</h2>';
+    if (!estado.alunosCarregados) {
+      return h + bloqueio('Nenhuma lista carregada.') +
+        '<div class="acoes"><button class="ativo" data-acao="importar">Importar lista de exemplo (simulado)</button></div>' +
+        '<p class="pequeno">No sistema real, aqui entraria um arquivo CSV ou o cadastro manual.</p>';
+    }
+    var linhas = estado.alunos.map(function (a) {
+      return '<tr><td>' + esc(a.nome) + '</td><td>' + esc(a.mat || '—') + '</td><td>' + esc(a.curso || '—') + '</td><td>' +
+        (a.pend ? 'Pendência: ' + esc(a.pend) : 'Apto') + '</td></tr>';
+    }).join('');
+    return h + '<div class="alerta ok">Carga confirmada: ' + (estado.alunos.length - pendentes().length) + ' registros válidos e ' +
+      pendentes().length + ' com pendência. Pendências ficam fora da distribuição até serem corrigidas.</div>' +
+      '<div class="tabela"><table><tr><th>Nome</th><th>Matrícula</th><th>Curso</th><th>Situação</th></tr>' + linhas + '</table></div>';
+  };
+ 
+  telas.c_dist = function () {
+    var h = '<h2>Distribuição</h2>';
+    if (!estado.alunosCarregados) return h + bloqueio('Carregue a lista de alunos primeiro (menu Alunos).');
+    var cap = ativas().reduce(function (t, s) { return t + s.cap; }, 0);
+    h += '<div class="caixa"><strong>Resumo antes de gerar</strong><br>Alunos aptos: ' + aptos().length +
+      ' · Salas: ' + ativas().length + ' · Capacidade total: ' + cap +
+      '<div class="acoes"><button class="ativo" data-acao="gerar"' + (estado.publicado ? ' disabled' : '') + '>Gerar distribuição</button></div>' +
+      (estado.publicado ? '<p class="pequeno">Já publicada. Use "Remanejar" para mudanças.</p>' : '') + '</div>';
+    if (!estado.gerado) return h;
+ 
+    h += '<h3>Revisão</h3>';
+    var ss = semSala(), vazias = ativas().filter(function (s) { return ocup(s.id) === 0; });
+    h += ss.length ? '<div class="alerta erro">⚠ Alunos sem sala: ' + ss.map(function (a) { return esc(a.nome); }).join(', ') + '</div>' : '<div class="alerta ok">✔ Todos os alunos aptos têm sala.</div>';
+    if (vazias.length) h += '<div class="alerta">Salas sem ocupação: ' + vazias.map(function (s) { return esc(s.cod); }).join(', ') + '</div>';
+    h += '<div class="tabela"><table><tr><th>Sala</th><th>Ocupação</th><th>Alunos</th></tr>' +
+      estado.salas.map(function (s) {
+        var nomes = estado.alunos.filter(function (a) { return estado.aloc[a.id] === s.id; }).map(function (a) { return esc(a.nome); }).join(', ');
+        return '<tr><td>' + esc(s.cod) + (s.ativa ? '' : ' (interditada)') + '</td><td>' + ocup(s.id) + ' / ' + s.cap + '</td><td>' + (nomes || '—') + '</td></tr>';
+      }).join('') + '</table></div>';
+ 
+    if (!estado.publicado) {
+      h += '<h3>Ajuste manual</h3><form data-form="mover" class="caixa">' +
+        '<label for="al">Aluno</label><select id="al" name="al">' + aptos().map(function (a) {
+          var s = sala(estado.aloc[a.id]); return opt(a.id, a.nome + ' (' + (s ? s.cod : 'sem sala') + ')', false);
+        }).join('') + '</select>' +
+        '<label for="sl">Mover para a sala</label><select id="sl" name="sl">' + ativas().map(function (s) {
+          return opt(s.id, s.cod + ' – ' + ocup(s.id) + '/' + s.cap, false);
+        }).join('') + '</select>' +
+        '<div class="acoes"><button class="ativo" type="submit">Mover aluno</button></div></form>';
+      h += '<h3>Publicar</h3><div class="caixa">Ao publicar, alunos e fiscais passam a ver a alocação.' +
+        '<div class="acoes"><button class="ativo" data-acao="publicar">Publicar distribuição</button></div></div>';
+    } else {
+      h += '<div class="alerta ok">✔ Distribuição publicada.</div>';
+    }
+    return h + registro();
+  };
+ 
+  telas.c_remanej = function () {
+    var h = '<h2>Remanejar (imprevistos)</h2>';
+    if (!estado.publicado) return h + bloqueio('Só é possível remanejar depois de publicar a distribuição.');
+    var origens = ativas().filter(function (s) { return ocup(s.id) > 0; });
+    var interd = estado.salas.filter(function (s) { return !s.ativa; });
+    if (interd.length) h += '<div class="alerta">Salas interditadas: ' + interd.map(function (s) { return esc(s.cod); }).join(', ') + '</div>';
+    if (!origens.length) return h + bloqueio('Nenhuma sala ocupada disponível para remanejar.');
+    h += '<form data-form="remanejar" class="caixa">' +
+      '<label for="ori">Sala com problema (será interditada)</label><select id="ori" name="ori">' +
+      origens.map(function (s) { return opt(s.id, s.cod + ' – ' + ocup(s.id) + ' alunos', false); }).join('') + '</select>' +
+      '<label for="des">Sala de contingência</label><select id="des" name="des">' +
+      ativas().map(function (s) { return opt(s.id, s.cod + ' – ' + ocup(s.id) + '/' + s.cap, false); }).join('') + '</select>' +
+      '<div class="acoes"><button class="ativo" type="submit">Confirmar remanejamento</button></div></form>';
+    return h + registro();
+  };
+ 
+  telas.c_rel = function () {
+    var h = '<h2>Relatórios de ocupação</h2>';
+    if (!estado.gerado) return h + bloqueio('Gere a distribuição para ver os relatórios.');
+    var f = estado.filtroRel;
+    var lista = estado.alunos.filter(function (a) { return estado.aloc[a.id] && (f === '0' || String(estado.aloc[a.id]) === f); });
+    return h + '<label for="filtro">Filtrar por sala</label><select id="filtro" data-filtro="filtroRel">' + opt('0', 'Todas', f === '0') +
+      estado.salas.map(function (s) { return opt(s.id, s.cod + ' (' + s.predio + ')', String(s.id) === f); }).join('') + '</select>' +
+      '<div class="tabela"><table><tr><th>Aluno</th><th>Matrícula</th><th>Sala</th><th>Prédio</th></tr>' +
+      (lista.map(function (a) { var s = sala(estado.aloc[a.id]); return '<tr><td>' + esc(a.nome) + '</td><td>' + esc(a.mat) + '</td><td>' + esc(s.cod) + '</td><td>' + esc(s.predio) + '</td></tr>'; }).join('') || '<tr><td colspan="4">Nenhum aluno.</td></tr>') +
+      '</table></div><div class="acoes"><button class="sec" data-acao="exportar">Exportar PDF</button><button class="sec" data-acao="exportar">Exportar planilha</button></div>';
+  };
+ 
+  // ----- Fiscal -----
+  telas.f_lista = function () {
+    var h = '<h2>Lista da sala</h2>';
+    if (!estado.publicado) return h + bloqueio('A lista ainda não foi publicada.');
+    var f = estado.filtroFiscal, s = sala(Number(f));
+    var lista = estado.alunos.filter(function (a) { return String(estado.aloc[a.id]) === f; });
+    h += '<label for="filtro">Sala</label><select id="filtro" data-filtro="filtroFiscal">' +
+      estado.salas.map(function (x) { return opt(x.id, x.cod + ' (' + x.predio + ')', String(x.id) === f); }).join('') + '</select>' +
+      '<p class="pequeno">Última atualização: ' + esc(estado.atualizadoEm) + '</p>';
+    if (s && !s.ativa) h += '<div class="alerta erro">⚠ Sala interditada. Os alunos foram remanejados; consulte a lista da nova sala.</div>';
+    return h + '<div class="tabela"><table><tr><th>Presente</th><th>Aluno</th><th>Matrícula</th></tr>' +
+      (lista.map(function (a) { return '<tr><td><input type="checkbox" aria-label="Presença de ' + esc(a.nome) + '" style="width:auto"></td><td>' + esc(a.nome) + '</td><td>' + esc(a.mat) + '</td></tr>'; }).join('') || '<tr><td colspan="3">Nenhum aluno nesta sala.</td></tr>') +
+      '</table></div>';
+  };
+ 
+  function registro() {
+    return '<h3>Registro de alterações</h3>' + (estado.log.length ? '<ul>' + estado.log.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul>' : '<p class="pequeno">Nenhuma alteração ainda.</p>');
+  }
+ 
+  // ---------- Ações ----------
+  var acoes = {
+    ir: function (el) { estado.tela = el.getAttribute('data-tela'); },
+    sair: function () { estado.perfil = null; estado.tela = 'login'; },
+    inscrever: function () { estado.inscrito = true; aviso('ok', 'Inscrição confirmada com sucesso.'); },
+    imprimir: function () { window.print(); },
+    exportar: function () { aviso('ok', 'Exportação simulada (no protótipo nenhum arquivo é gerado).'); },
+    importar: function () { estado.alunosCarregados = true; aviso('ok', 'Lista de exemplo carregada.'); },
+    gerar: function () {
+      var cont = {}; estado.aloc = {};
+      aptos().forEach(function (a) {
+        var s = ativas().filter(function (x) { return (cont[x.id] || 0) < x.cap; })[0];
+        if (s) { estado.aloc[a.id] = s.id; cont[s.id] = (cont[s.id] || 0) + 1; }
+      });
+      estado.gerado = true; estado.log = []; registrar('Distribuição gerada.');
+      aviso('ok', 'Distribuição gerada. Revise antes de publicar.');
+    },
+    publicar: function () {
+      var n = semSala().length;
+      var txt = 'Publicar a distribuição?\nAlocados: ' + Object.keys(estado.aloc).length + '\nSem sala: ' + n + (n ? '\n\nAtenção: há alunos sem sala.' : '');
+      if (!window.confirm(txt)) return;
+      estado.publicado = true; registrar('Distribuição publicada.'); aviso('ok', 'Distribuição publicada.');
+    }
+  };
+ 
+  var forms = {
+    login: function (fd) {
+      var id = String(fd.get('id') || '').trim();
+      if (!id) { document.getElementById('erro').textContent = 'Informe sua matrícula ou e-mail institucional para entrar.'; return false; }
+      estado.perfil = fd.get('perfil'); estado.usuario = id; estado.tela = MENUS[estado.perfil][0][0];
+    },
+    config: function (fd) {
+      if (!fd.get('data') || !fd.get('hora')) { aviso('erro', 'Preencha data e horário.'); return; }
+      estado.config = { data: fd.get('data'), hora: fd.get('hora'), campus: fd.get('campus') };
+      aviso('ok', 'Configuração salva.');
+    },
+    sala: function (fd) {
+      var cod = String(fd.get('cod') || '').trim(), predio = String(fd.get('predio') || '').trim();
+      var cap = parseInt(fd.get('cap'), 10);
+      if (!cod || !predio) { aviso('erro', 'Informe o código da sala e o prédio.'); return; }
+      if (!(cap >= 1)) { aviso('erro', 'A capacidade deve ser um número maior que zero.'); return; }
+      if (estado.salas.some(function (s) { return s.cod.toLowerCase() === cod.toLowerCase(); })) { aviso('erro', 'Já existe uma sala com o código ' + cod + '.'); return; }
+      estado.salas.push({ id: estado.salas.length + 1, cod: cod, predio: predio, cap: cap, rec: String(fd.get('rec') || '-').trim() || '-', ativa: true });
+      aviso('ok', 'Sala ' + cod + ' cadastrada.');
+    },
+    mover: function (fd) {
+      var a = aluno(Number(fd.get('al'))), s = sala(Number(fd.get('sl')));
+      if (estado.aloc[a.id] === s.id) { aviso('erro', a.nome + ' já está na sala ' + s.cod + '.'); return; }
+      if (ocup(s.id) >= s.cap) { aviso('erro', 'Sala ' + s.cod + ' cheia (' + ocup(s.id) + '/' + s.cap + '). Não é possível confirmar.'); return; }
+      estado.aloc[a.id] = s.id; registrar('Ajuste manual: ' + a.nome + ' → ' + s.cod + '.'); aviso('ok', a.nome + ' movido(a) para ' + s.cod + '.');
+    },
+    remanejar: function (fd) {
+      var o = sala(Number(fd.get('ori'))), d = sala(Number(fd.get('des')));
+      if (o.id === d.id) { aviso('erro', 'Escolha uma sala de contingência diferente da sala com problema.'); return; }
+      var n = ocup(o.id), livres = d.cap - ocup(d.id);
+      if (n > livres) { aviso('erro', 'A sala ' + d.cod + ' tem ' + livres + ' vaga(s), mas ' + n + ' aluno(s) precisam ser remanejados. Escolha outra sala ou cadastre uma nova.'); return; }
+      var moveuAna = estado.aloc[ALUNO_LOGADO] === o.id;
+      for (var k in estado.aloc) { if (estado.aloc[k] === o.id) estado.aloc[k] = d.id; }
+      o.ativa = false;
+      if (moveuAna) estado.avisoAluno = 'Sua sala mudou de ' + o.cod + ' para ' + d.cod + '. Confira o comprovante atualizado.';
+      registrar('Remanejamento: ' + n + ' aluno(s) de ' + o.cod + ' para ' + d.cod + '. Sala ' + o.cod + ' interditada.');
+      aviso('ok', 'Remanejamento concluído. Listas, consulta e comprovante foram atualizados.');
+    }
+  };
+ 
+  // ---------- Renderização ----------
+  function render() {
+    var menu = document.getElementById('menu'), usuario = document.getElementById('usuario'), tela = document.getElementById('tela');
+    if (estado.perfil) {
+      menu.hidden = false;
+      menu.innerHTML = MENUS[estado.perfil].map(function (m) {
+        return '<button data-acao="ir" data-tela="' + m[0] + '"' + (m[0] === estado.tela ? ' class="ativo" aria-current="page"' : '') + '>' + m[1] + '</button>';
+      }).join('');
+      usuario.innerHTML = esc(NOMES[estado.perfil]) + ' · ' + esc(estado.usuario) + ' <button class="sec" data-acao="sair">Sair</button>';
+    } else {
+      menu.hidden = true; menu.innerHTML = ''; usuario.innerHTML = '';
+    }
+    var m = '';
+    if (estado.msg) {
+      m = '<div class="alerta ' + (estado.msg.tipo === 'erro' ? 'erro' : 'ok') + '" role="status">' + (estado.msg.tipo === 'erro' ? '⚠ ' : '✔ ') + esc(estado.msg.texto) + '</div>';
+      estado.msg = null;
+    }
+    var corpo = telas[estado.tela || 'login']();
+    // a mensagem aparece logo abaixo do título da tela
+    var i = corpo.indexOf('</h2>');
+    tela.innerHTML = i >= 0 ? corpo.slice(0, i + 5) + m + corpo.slice(i + 5) : m + corpo;
+  }
+ 
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-acao]');
+    if (!el || el.disabled) return;
+    var f = acoes[el.getAttribute('data-acao')];
+    if (f) { f(el); render(); }
+  });
+  document.addEventListener('submit', function (e) {
+    var nome = e.target.getAttribute('data-form');
+    if (!nome) return;
+    e.preventDefault();
+    var r = forms[nome](new FormData(e.target));
+    if (r !== false) render();
+  });
+  document.addEventListener('change', function (e) {
+    var chave = e.target.getAttribute('data-filtro');
+    if (chave) { estado[chave] = e.target.value; render(); }
+  });
+ 
+  estado.tela = 'login';
+  render();
+})();
+</script>
+</body>
+</html>
